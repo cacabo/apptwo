@@ -47,7 +47,7 @@ class NavbarNavigation extends Component {
         </li>
         <li className="nav-item bold">
           {this.state.isLoggedIn ? (
-            <a className="nav-link" onClick={() => this.logout()}>
+            <a className="nav-link" href="" onClick={() => this.logout()}>
               Logout
             </a>
           ) : (
