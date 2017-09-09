@@ -24,7 +24,6 @@ class Register extends Component {
   }
 
   handleChangeUsername(event) {
-    console.log(event.target.value);
     this.setState({ username: event.target.value });
   }
 
@@ -35,21 +34,25 @@ class Register extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let noErr = true;
-    firebase.auth().createUserWithEmailAndPassword(this.state.username,
-        this.state.password).catch((error) => {
-            noErr = false;
-            alert(error.message);
-            console.log('Error registering with firebase', error.code, error.message);
-        })
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.username, this.state.password)
+      .catch(error => {
+        noErr = false;
+        alert(error.message);
+        console.log(
+          "Error registering with firebase",
+          error.code,
+          error.message
+        );
+      })
       .then(() => {
         if (noErr) {
-            console.log("Hello");
-            const user = firebase.auth().currentUser;
-            console.log("Hello" + user);
-            firebase
-              .database()
-              .ref(`/users/${user.uid}`)
-              .set({ isWorking: true });
+          const user = firebase.auth().currentUser;
+          firebase
+            .database()
+            .ref(`/users/${user.uid}`)
+            .set({ isWorking: true });
         }
       })
       .catch(error => {
