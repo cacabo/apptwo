@@ -7,6 +7,7 @@ class Login extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       if(user) {
+        console.log(user);
         window.location = '/';
       }
     });

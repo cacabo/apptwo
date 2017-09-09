@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import firebase from "firebase";
 
 class NavbarNavigation extends Component {
+  constructor(props) {
+    super(props);
+  }
   logout() {
     console.log("logging you out!");
     firebase

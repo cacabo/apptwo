@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// import Register from "./components/register.js";
+import firebase from "firebase";
+
 import "./css/strapper.min.css";
 import "./css/App.css";
 
@@ -28,7 +29,6 @@ class App extends Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-
             <Route exact path="/application" component={Application} />
             <Route exact path="/applications" component={Table} />
           </PageContainer>
