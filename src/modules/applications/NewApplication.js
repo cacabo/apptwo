@@ -63,7 +63,6 @@ class Login extends Component {
               className="form-control marg-bot-1"
               value={this.state.deadline}
               onChange={this.handleChangeDeadline}
-              required="true"
             />
 
             <input
