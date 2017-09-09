@@ -80,7 +80,7 @@ class Register extends Component {
               value="Submit"
             />
 
-            <p className="marg-top-2 blue-gray-text">
+            <p className="marg-top-2 blue-gray-text marg-bot-0">
               Already have an account?{" "}
               <a href="./login" className="purple-text">
                 Log in here.

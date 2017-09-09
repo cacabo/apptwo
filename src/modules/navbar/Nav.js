@@ -20,7 +20,7 @@ class Nav extends Component {
           AppTwo
         </a>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <NavbarNavigation />
+          <NavbarNavigation isLoggedIn={this.props.isLoggedIn}/>
         </div>
       </nav>
     );

@@ -21,11 +21,26 @@ import User from "./modules/users/User";
 
 // Application
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoggedIn: false };
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          isLoggedIn: true
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <Nav />
+          <Nav isLoggedIn={this.state.isLoggedIn} />
 
           <PageContainer>
             <Switch>
