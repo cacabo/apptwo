@@ -18,6 +18,7 @@ import Login from "./modules/auth/Login";
 import Register from "./modules/auth/Register";
 import NotFound from "./modules/NotFound";
 import User from "./modules/users/User";
+import NewApplication from "./modules/applications/NewApplication";
 
 // Application
 class App extends Component {
@@ -50,6 +51,7 @@ class App extends Component {
                   <Route exact path="/about" component={About} />
                   <Route exact path="/user" component={User} />
                   <Route exact path="/applications" component={Table} />
+                  <Route exact path="/applications/new" component={NewApplication} />
                   <Route exact path="/applications/:id" component={Application} />
                   <Route exact path="/register" component={() => {}} />
                   <Route exact path="/login" component={() => {}} />
