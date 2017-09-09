@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import React, { Component } from "react";
 import ResCol from "../helper/ResCol";
+import $ from "jquery";
 
 class Login extends Component {
   constructor(props) {
@@ -19,6 +20,14 @@ class Login extends Component {
       if (user) {
         window.location = "/";
       }
+    });
+
+    $('.form-control').focus(function() {
+      $(this).prev('label').addClass('purple-text');
+    });
+
+    $('.form-control').blur(function() {
+      $(this).prev('label').removeClass('purple-text');
     });
   }
 

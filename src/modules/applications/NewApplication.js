@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import React, { Component } from "react";
 import ResCol from "../helper/ResCol";
+import $ from "jquery";
 
 class Login extends Component {
   constructor(props) {
@@ -13,6 +14,16 @@ class Login extends Component {
     this.handleChangeDeadline = this.handleChangeDeadline.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    $('.form-control').focus(function() {
+      $(this).prev('label').addClass('purple-text');
+    });
+
+    $('.form-control').blur(function() {
+      $(this).prev('label').removeClass('purple-text');
+    });
   }
 
   handleChangeTitle(event) {
@@ -59,7 +70,7 @@ class Login extends Component {
 
             <label>Deadline</label>
             <input
-              type="text"
+              type="datetime-local"
               className="form-control marg-bot-1"
               value={this.state.deadline}
               onChange={this.handleChangeDeadline}

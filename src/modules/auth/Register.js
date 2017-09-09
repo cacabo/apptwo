@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import ResCol from "../helper/ResCol";
+import $ from "jquery";
 
 import React, { Component } from "react";
 
@@ -20,6 +21,14 @@ class Register extends Component {
       if (user) {
         window.location = "/";
       }
+    });
+
+    $('.form-control').focus(function() {
+      $(this).prev('label').addClass('purple-text');
+    });
+
+    $('.form-control').blur(function() {
+      $(this).prev('label').removeClass('purple-text');
     });
   }
 

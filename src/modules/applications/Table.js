@@ -38,6 +38,10 @@ class Table extends Component {
               </tbody>
             </table>
           </div>
+
+          <a href="/applications/new" className="btn bold purple shade-2 hover white-text marg-top-1">
+            New application
+          </a>
         </div>
       </div>
     );
