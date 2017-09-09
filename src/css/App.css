@@ -1,7 +1,15 @@
+/* spacing and formatting */
 .min-height {
   min-height: calc(100vh - 50px);
 }
 
+.clean-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* colors */
 .blue-gray-text {
   color: #8898aa !important;
 }
@@ -14,8 +22,12 @@
   border-bottom: 1px solid #dee8f4;
 }
 
-.clean-list {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
+/* navbar */
+.navbar .navbar-toggler {
+  outline: 0 !important;
+  border: 0px solid transparent !important;
+}
+
+.navbar {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.0375);
 }

@@ -4,7 +4,7 @@ import NavbarNavigation from "./NavbarNavigation";
 class Nav extends Component {
   render() {
     return (
-      <nav className="navbar navbar-toggleable-md navbar-light white-blue bord-bot-blue-gray">
+      <nav className="navbar navbar-toggleable-md navbar-light white bord-bot-blue-gray">
         <button
           className="navbar-toggler navbar-toggler-right"
           type="button"

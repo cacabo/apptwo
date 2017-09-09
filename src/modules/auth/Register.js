@@ -49,39 +49,41 @@ class Register extends Component {
   render() {
     return (
       <ResCol>
-        <form onSubmit={this.handleSubmit}>
-          <h2 className="marg-bot-1">Register</h2>
+        <div className="white shade-1 round-1 pad-2">
+          <form onSubmit={this.handleSubmit}>
+            <h2 className="marg-bot-1">Register</h2>
 
-          <label>Email</label>
-          <input
-            type="email"
-            className="form-control marg-bot-1"
-            value={this.state.username}
-            onChange={this.handleChangeUsername}
-            required="true"
-          />
+            <label>Email</label>
+            <input
+              type="email"
+              className="form-control marg-bot-1"
+              value={this.state.username}
+              onChange={this.handleChangeUsername}
+              required="true"
+            />
 
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control marg-bot-2"
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-            required="true"
-          />
-          <input
-            type="submit"
-            className="btn purple bold shade-3 hover white-text bold"
-            value="Submit"
-          />
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control marg-bot-2"
+              value={this.state.password}
+              onChange={this.handleChangePassword}
+              required="true"
+            />
+            <input
+              type="submit"
+              className="btn purple bold shade-3 hover white-text bold"
+              value="Submit"
+            />
 
-          <p className="marg-top-1 blue-gray-text">
-            Already have an account?{" "}
-            <a href="./login" className="purple-text">
-              Log in here.
-            </a>
-          </p>
-        </form>
+            <p className="marg-top-1 blue-gray-text">
+              Already have an account?{" "}
+              <a href="./login" className="purple-text">
+                Log in here.
+              </a>
+            </p>
+          </form>
+        </div>
       </ResCol>
     );
   }
