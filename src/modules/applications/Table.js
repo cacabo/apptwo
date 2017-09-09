@@ -52,7 +52,7 @@ class Table extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <div className="white round-1 shade-1">
+          <div className="fade-in white round-1 shade-1">
             <table className="table">
               <thead>
                 <tr>

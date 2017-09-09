@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import ResCol from './helper/ResCol';
+import $ from 'jquery';
 
 class PageContainer extends Component {
+  componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+  }
+
   render() {
     return (
       <ResCol>

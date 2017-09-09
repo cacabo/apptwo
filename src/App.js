@@ -19,12 +19,15 @@ import Register from "./modules/auth/Register";
 import NotFound from "./modules/NotFound";
 import User from "./modules/users/User";
 import NewApplication from "./modules/applications/NewApplication";
+import $ from 'jquery'
 
 // Application
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: false };
+    this.state = {
+      isLoggedIn: false,
+    };
   }
 
   componentDidMount() {
@@ -42,6 +45,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav isLoggedIn={this.state.isLoggedIn} />
+
+          <div id="flash"></div>
 
           <PageContainer>
             {

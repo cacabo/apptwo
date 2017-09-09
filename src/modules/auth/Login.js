@@ -16,6 +16,8 @@ class Login extends Component {
   }
 
   componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         window.location = "/";
@@ -46,10 +48,10 @@ class Login extends Component {
       .signInWithEmailAndPassword(this.state.username, this.state.password)
       .catch(error => {
         if (error) {
-          $('#errors').html(`<div class="alert alert-danger">
-            <h3>There was an issue logging into your account</h3>
+          $('#errors').html(`<div class="alert">
+            <h4>There was an issue logging into your account</h4>
             <p>Check the form and try again.</p>
-            <p>${error.message}</p>
+            <p class="class="marg-bot-0">${error.message}</p>
           </div>`);
         }
       });
@@ -58,7 +60,7 @@ class Login extends Component {
   render() {
     return (
       <ResCol>
-        <div className="white pad-2 shade-1 round-1">
+        <div className="fade-in white pad-2 shade-1 round-1">
           <form onSubmit={this.handleSubmit}>
             <h2 className="marg-bot-1">Login</h2>
 
