@@ -27,7 +27,6 @@ class Login extends Component {
       .signInWithEmailAndPassword(this.state.username, this.state.password)
       .catch(error => {
         if (error) {
-          noErr = false;
           alert(error.message);
         } else {
           console.log("in else");
@@ -38,23 +37,32 @@ class Login extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1>Register</h1>
+        <h2>Login</h2>
 
         <label>
-          Username:
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChangeUsername}
-          />
-          Password:
-          <input
-            type="text"
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-          />
+          Username
         </label>
-        <input type="submit" value="Submit" />
+        <input
+          type="text"
+          className="form-control marg-bot-1"
+          value={this.state.username}
+          onChange={this.handleChangeUsername}
+        />
+
+        <label>
+          Password
+        </label>
+        <input
+          type="text"
+          className="form-control marg-bot-2"
+          value={this.state.password}
+          onChange={this.handleChangePassword}
+        />
+        <input type="submit" className="btn white shade-3 hover cursor white-text purple bold" value="Submit" />
+
+        <p className="blue-gray-text marg-top-1">
+          Don't have an account? <a href="./register" className="purple-text">Register here.</a>
+        </p>
       </form>
     );
   }

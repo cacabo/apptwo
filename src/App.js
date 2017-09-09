@@ -12,6 +12,8 @@ import Home from "./modules/Home";
 import About from "./modules/About";
 import Application from "./modules/applications/Application";
 import Table from "./modules/applications/Table";
+import Login from "./modules/auth/Login";
+import Register from "./modules/auth/Register";
 
 // Application
 class App extends Component {
@@ -24,6 +26,8 @@ class App extends Component {
           <PageContainer>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
 
             <Route exact path="/application" component={Application} />
             <Route exact path="/applications" component={Table} />

@@ -1,5 +1,5 @@
 import * as firebase from "firebase";
-import { firebaseApp } from "../firebase.js";
+import { firebaseApp } from "../../firebase.js";
 
 import React, { Component } from "react";
 
@@ -22,7 +22,6 @@ class Register extends Component {
   }
 
   handleSubmit(event) {
-    // alert("A name was submitted: " + this.state.username);
     event.preventDefault();
     firebase
       .auth()
@@ -40,23 +39,32 @@ class Register extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1>Register</h1>
+        <h2>Register</h2>
 
         <label>
-          Username:
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChangeUsername}
-          />
-          Password:
-          <input
-            type="text"
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-          />
+          Username
         </label>
-        <input type="submit" value="Submit" />
+        <input
+          type="text"
+          className="form-control marg-bot-1"
+          value={this.state.username}
+          onChange={this.handleChangeUsername}
+        />
+
+        <label>
+          Password
+        </label>
+        <input
+          type="text"
+          className="form-control marg-bot-2"
+          value={this.state.password}
+          onChange={this.handleChangePassword}
+        />
+        <input type="submit" className="btn purple bold shade-3 hover white-text bold" value="Submit" />
+
+        <p className="marg-top-1 blue-gray-text">
+          Already have an account? <a href="./login" className="purple-text">Log in here.</a>
+        </p>
       </form>
     );
   }
