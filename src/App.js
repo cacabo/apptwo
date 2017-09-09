@@ -43,17 +43,28 @@ class App extends Component {
           <Nav isLoggedIn={this.state.isLoggedIn} />
 
           <PageContainer>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/applications" component={Table} />
-              <Route exact path="/applications/:id" component={Application} />
-              <Route exact path="/user" component={User} />
-              <Route exact path="/404" component={NotFound} />
-              <Route path='*' exact={true} component={NotFound} />
-            </Switch>
+            {
+              this.state.isLoggedIn ? (
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/about" component={About} />
+                  <Route exact path="/user" component={User} />
+                  <Route exact path="/applications" component={Table} />
+                  <Route exact path="/applications/:id" component={Application} />
+                  <Route exact path="/404" component={NotFound} />
+                  <Route path='*' exact={true} component={NotFound} />
+                </Switch>
+              ) : (
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/about" component={About} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/404" component={NotFound} />
+                  <Route path='*' exact={true} component={NotFound} />
+                </Switch>
+              )
+            }
           </PageContainer>
 
           <Footer />
