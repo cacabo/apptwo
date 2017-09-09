@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import ResCol from '../helper/ResCol';
 
 import React, { Component } from "react";
 
