@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './css/strapper.min.css';
+import './css/App.css';
+import Nav from './modules/Nav';
+import Footer from './modules/Footer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <Nav />
+
+        <div className="container">
+          <div className="space-2"></div>
+          <h2 className="">
+            Welcome to AppTwo
+          </h2>
+          <p className="">
+            This is lit as fucking balls.
+          </p>
+          <div className="space-2"></div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <Footer />
       </div>
     );
   }
