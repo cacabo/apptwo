@@ -22,6 +22,12 @@
   border-bottom: 1px solid #dee8f4;
 }
 
+/* forms */
+.form-control:active,
+.form-control:focus {
+  border-color: #6772e5 !important;
+}
+
 /* navbar */
 .navbar .navbar-toggler {
   outline: 0 !important;

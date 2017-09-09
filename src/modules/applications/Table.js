@@ -1,40 +1,43 @@
 import React, { Component } from "react";
+import Row from './Row';
 
 class Table extends Component {
   render() {
     return (
       <div className="row">
         <div className="col-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="white round-1 shade-1">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Deadline</th>
+                </tr>
+              </thead>
+              <tbody>
+                <Row
+                  id="1"
+                  title="Product Management and Analytics Intern"
+                  company="Capital One"
+                  deadline="9/9/17"
+                />
+                <Row
+                  id="2"
+                  title="Business Analyst Intern"
+                  company="CB Insights"
+                  deadline="9/12/17"
+                />
+                <Row
+                  id="3"
+                  title="Software Engineering Intern"
+                  company="Honey"
+                  deadline="9/30/17"
+                />
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );
