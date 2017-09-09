@@ -40,7 +40,26 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // TODO
+    const user = firebase.auth().currentUser;
+    firebase
+      .database()
+      .ref(`users/${user.uid}/applications`)
+      .push({
+        title: this.state.title,
+        company: this.state.company,
+        deadline: this.state.deadline
+      })
+      .then(() => {
+        window.location = "/applications";
+      })
+      .catch(error => {
+        alert(error.message);
+        console.log(
+          "Error registering with firebase",
+          error.code,
+          error.message
+        );
+      });
   }
 
   render() {
@@ -79,9 +98,11 @@ class Login extends Component {
             <input
               type="submit"
               className={
-                this.state.title.length && this.state.company.length ?
-                  "btn white shade-3 hover cursor white-text purple bold" :
+                this.state.title.length && this.state.company.length ? (
+                  "btn white shade-3 hover cursor white-text purple bold"
+                ) : (
                   "disabled btn white shade-3 hover cursor white-text purple bold"
+                )
               }
               value="Create application"
             />
