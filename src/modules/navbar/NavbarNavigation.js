@@ -56,9 +56,6 @@ class NavbarNavigation extends Component {
             <a className="nav-link" href="/login">
               Login
             </a>
-            <a className="nav-link" href="/register">
-              Register
-            </a>
           }
         </li>
       </ul>
