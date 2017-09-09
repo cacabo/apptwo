@@ -8,3 +8,4 @@ Say goodbye to a map of excel sheets and word docs.
 - [ ] Firebase configuration
 - [ ] Backend
 - [ ] Views
+- [ ] More meta tags

@@ -13,6 +13,7 @@ import Footer from './modules/footer/Footer';
 import PageContainer from './modules/PageContainer';
 import Home from './modules/Home';
 import About from './modules/About';
+import Application from './modules/application/Application';
 
 // Application
 class App extends Component {
@@ -25,6 +26,8 @@ class App extends Component {
           <PageContainer>
             <Route exact path='/' component={Home} />
             <Route exact path='/about' component={About} />
+
+            <Route exact path='/application' component={Application} />
           </PageContainer>
 
           <Footer />
