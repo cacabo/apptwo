@@ -1,7 +1,7 @@
 import firebase from "firebase";
 import React, { Component } from "react";
 import Row from "./Row";
-import $ from 'jquery';
+import $ from "jquery";
 
 class Table extends Component {
   constructor(props) {
@@ -11,7 +11,9 @@ class Table extends Component {
     };
   }
   componentDidMount() {
-    $('.fade-in').delay(100).fadeIn(200);
+    $(".fade-in")
+      .delay(100)
+      .fadeIn(200);
 
     const user = firebase.auth().currentUser;
     const database = firebase.database();
@@ -20,7 +22,6 @@ class Table extends Component {
       .once("value")
       .then(snapshot => {
         const applications = snapshot.val();
-        console.log(applications);
         this.setState({
           applications
         });
@@ -29,7 +30,6 @@ class Table extends Component {
 
   displayRow(key, count) {
     const application = this.state.applications[key];
-    console.log("app", application);
     return (
       <Row
         key={key}
@@ -69,7 +69,7 @@ class Table extends Component {
             </table>
           </div>
 
-          <div className="space-1"></div>
+          <div className="space-1" />
           <a
             href="/applications/new"
             className="fade-in btn bold purple shade-2 hover white-text"
