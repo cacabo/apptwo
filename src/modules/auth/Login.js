@@ -17,14 +17,12 @@ class Login extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user);
         window.location = "/";
       }
     });
   }
 
   handleChangeUsername(event) {
-    console.log(event.target.value);
     this.setState({ username: event.target.value });
   }
 
@@ -33,7 +31,6 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
-    // alert("A name was submitted: " + this.state.username);
     event.preventDefault();
     firebase
       .auth()
@@ -78,7 +75,7 @@ class Login extends Component {
                   "btn white shade-3 hover cursor white-text purple bold" :
                   "disabled btn white shade-3 hover cursor white-text purple bold"
               }
-              value="Submit"
+              value="Login"
             />
 
             <p className="blue-gray-text marg-top-2 marg-bot-0">

@@ -9,6 +9,10 @@
   margin-left: 0;
 }
 
+.fade-in {
+  display: none;
+}
+
 /* colors */
 .blue-gray-text {
   color: #8898aa !important;
@@ -27,10 +31,33 @@
   cursor: disabled;
 }
 
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.disabled:hover {
+  transform: translateY(0px);
+}
+
 /* forms */
 .form-control:active,
 .form-control:focus {
   border-color: #6772e5 !important;
+}
+
+label {
+  margin-bottom: 0rem;
+  transition: all 0.2s ease;
+}
+
+.form-control {
+  border-radius: 0px;
+  border-width: 0px;
+  border-bottom-width: 2px;
 }
 
 /* navbar */

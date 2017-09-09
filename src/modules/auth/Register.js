@@ -6,12 +6,12 @@ import React, { Component } from "react";
 class Register extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { username: "", password: "" };
-
+    this.state = {
+      username: "",
+      password: ""
+    };
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -105,7 +105,7 @@ class Register extends Component {
                   "disabled btn white shade-3 hover cursor white-text purple bold"
                 )
               }
-              value="Submit"
+              value="Register"
             />
 
             <p className="marg-top-2 blue-gray-text marg-bot-0">
