@@ -4,7 +4,19 @@ import firebase from "firebase";
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = { isLoggedIn: false };
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          isLoggedIn: true
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <div className="row">
@@ -21,6 +33,20 @@ class Home extends Component {
             <p>
               Say goodbye to a map of excel sheets and word docs.
             </p>
+            {
+              (!this.state.isLoggedIn)
+              ?
+              <div className="marg-top-2">
+                <a href="/login" className="btn purple-text white bold shade-2 hover marg-right-1">
+                  Login
+                </a>
+                <a href="/register" className="btn purple white-text bold shade-2 hover">
+                  Register
+                </a>
+              </div>
+              :
+              ''
+            }
           </div>
         </div>
       </div>

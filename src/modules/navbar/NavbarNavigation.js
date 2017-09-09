@@ -25,7 +25,6 @@ class NavbarNavigation extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(("user": user));
         this.setState({
           isLoggedIn: true
         });
