@@ -8,7 +8,7 @@ class Nav extends Component {
         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <a className="navbar-brand bold blue-gray-text" href="/">Navbar</a>
+        <a className="navbar-brand bold blue-gray-text" href="/">AppTwo</a>
         <div className="collapse navbar-collapse" id="navbarNav">
           <NavbarNavigation />
         </div>
