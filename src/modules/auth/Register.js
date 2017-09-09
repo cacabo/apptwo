@@ -77,7 +77,7 @@ class Register extends Component {
                   "btn white shade-3 hover cursor white-text purple bold" :
                   "disabled btn white shade-3 hover cursor white-text purple bold"
               }
-              value="Submit"
+              value="Register"
             />
 
             <p className="marg-top-2 blue-gray-text marg-bot-0">

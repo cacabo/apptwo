@@ -5,7 +5,9 @@ class User extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <p>email@me.com</p>
+          <p>
+            your_email_goes@here.com
+          </p>
         </div>
       </div>
     );

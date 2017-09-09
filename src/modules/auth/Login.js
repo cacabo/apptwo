@@ -78,7 +78,7 @@ class Login extends Component {
                   "btn white shade-3 hover cursor white-text purple bold" :
                   "disabled btn white shade-3 hover cursor white-text purple bold"
               }
-              value="Submit"
+              value="Login"
             />
 
             <p className="blue-gray-text marg-top-2 marg-bot-0">
