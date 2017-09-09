@@ -3,7 +3,6 @@ import firebase from "firebase";
 
 class NavbarNavigation extends Component {
   logout() {
-    console.log("logging you out!");
     firebase
       .auth()
       .signOut()

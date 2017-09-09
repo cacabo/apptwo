@@ -51,8 +51,6 @@ class Login extends Component {
             <p>Check the form and try again.</p>
             <p>${error.message}</p>
           </div>`);
-        } else {
-          console.log("in else");
         }
       });
   }
