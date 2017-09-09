@@ -13,3 +13,9 @@
 .bord-bot-blue-gray {
   border-bottom: 1px solid #dee8f4;
 }
+
+.clean-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
