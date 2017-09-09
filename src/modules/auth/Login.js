@@ -66,18 +66,22 @@ class Login extends Component {
             <label>Password</label>
             <input
               type="password"
-              className="form-control marg-bot-2"
+              className="form-control marg-bot-1"
               value={this.state.password}
               onChange={this.handleChangePassword}
               required="true"
             />
             <input
               type="submit"
-              className="btn white shade-3 hover cursor white-text purple bold"
+              className={
+                this.state.password.length && this.state.username.length ?
+                  "btn white shade-3 hover cursor white-text purple bold" :
+                  "disabled btn white shade-3 hover cursor white-text purple bold"
+              }
               value="Submit"
             />
 
-            <p className="blue-gray-text marg-top-1">
+            <p className="blue-gray-text marg-top-2">
               Don't have an account?{" "}
               <a href="./register" className="purple-text">
                 Register here.

@@ -22,6 +22,11 @@
   border-bottom: 1px solid #dee8f4;
 }
 
+.btn.purple.disabled {
+  background: #9ba0dd;
+  cursor: disabled;
+}
+
 /* forms */
 .form-control:active,
 .form-control:focus {
