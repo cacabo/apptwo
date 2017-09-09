@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
+import {
+ BrowserRouter as Router,
+ Route,
+ Link
+} from 'react-router-dom'
 import './css/strapper.min.css';
 import './css/App.css';
+
+// Components
 import Nav from './modules/Nav';
 import Footer from './modules/Footer';
+import PageContainer from './modules/PageContainer';
+import Home from './modules/Home';
+import About from './modules/About';
 
+// Application
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Nav />
+      <Router>
+        <div className="App">
+          <Nav />
 
-        <div className="container min-height">
-          <div className="space-2"></div>
-          <h2>
-            Welcome to AppTwo
-          </h2>
-          <p>
-            This is lit as fucking balls.
-          </p>
-          <div className="space-2"></div>
+          <PageContainer>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/about' component={About} />
+          </PageContainer>
+
+          <Footer />
         </div>
-
-        <Footer />
-      </div>
+      </Router>
     );
   }
 }

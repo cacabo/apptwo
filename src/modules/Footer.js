@@ -9,9 +9,6 @@ class Footer extends Component {
             AppTwo
           </h2>
           <p>
-            An app to make applications easier.
-          </p>
-          <p>
             Created by Cameron Cabo, Terry Jo, James Xue, and Adam Ripley.
           </p>
         </div>
