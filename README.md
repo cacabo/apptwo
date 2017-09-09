@@ -5,9 +5,38 @@ An application for applications. We make applying for jobs, clubs, and positions
 Say goodbye to a map of excel sheets and word docs.
 
 ### Todo
-- [ ] Firebase configuration
-- [ ] Backend
-- [ ] Views
-- [ ] More meta tags
-- [ ] Flash notifications
-- [ ] Single source of event listeners
+
+__Functionality__
+- [ ] User delete account
+- [ ] User edit application
+- [ ] User delete application
+- [ ] User verification?
+- [ ] Fix issue with async navbar loading
+
+__Views__
+- [ ] Link from table to application show page
+- [ ] Build out user show page
+- [ ] New component form
+- [ ] Edit component form
+- [ ] Delete component form
+- [ ] Edit article form
+- [ ] Delete article button
+
+__Backend__
+- [ ] Set up the structure for component
+  - [ ] ApplicationID
+  - [ ] Time stamp
+  - [ ] Title
+  - [ ] Description
+    - [ ] Markdown language (?)
+- [ ] Firebase / google analytics
+- [ ] Add more information for applications
+  - [ ] Link (where to submit)
+  - [ ] Status (enumerated type?)
+  - [ ] Priority (integer)
+- [ ] Search by name or company (handle with query strings?)
+- [ ] Sort by name or company or deadline
+
+__Down the line__
+- [ ] LinkedIn (scarping?)
+- [ ] Referrals
