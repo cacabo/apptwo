@@ -2,9 +2,6 @@ import React, { Component } from "react";
 
 class Home extends Component {
   render() {
-    console.log("Props");
-    console.log(this.props);
-
     return (
       <div className="row">
         <div className="col-12">
