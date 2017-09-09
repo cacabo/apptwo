@@ -31,6 +31,18 @@
   cursor: disabled;
 }
 
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.disabled:hover {
+  transform: translateY(0px);
+}
+
 /* forms */
 .form-control:active,
 .form-control:focus {

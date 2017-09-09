@@ -17,14 +17,12 @@ class Login extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user);
         window.location = "/";
       }
     });
   }
 
   handleChangeUsername(event) {
-    console.log(event.target.value);
     this.setState({ username: event.target.value });
   }
 
@@ -33,7 +31,6 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
-    // alert("A name was submitted: " + this.state.username);
     event.preventDefault();
     firebase
       .auth()

@@ -6,12 +6,12 @@ import React, { Component } from "react";
 class Register extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { username: "", password: "" };
-
+    this.state = {
+      username: "",
+      password: ""
+    };
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,7 +24,6 @@ class Register extends Component {
   }
 
   handleChangeUsername(event) {
-    console.log(event.target.value);
     this.setState({ username: event.target.value });
   }
 
