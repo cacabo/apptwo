@@ -8,8 +8,8 @@ import './css/strapper.min.css';
 import './css/App.css';
 
 // Components
-import Nav from './modules/Nav';
-import Footer from './modules/Footer';
+import Nav from './modules/navbar/Nav';
+import Footer from './modules/footer/Footer';
 import PageContainer from './modules/PageContainer';
 import Home from './modules/Home';
 import About from './modules/About';

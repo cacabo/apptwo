@@ -6,4 +6,5 @@ Say goodbye to a map of excel sheets and word docs.
 
 ### Todo
 - [ ] Firebase configuration
+- [ ] Backend
 - [ ] Views

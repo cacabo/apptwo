@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NavbarNavigation from './NavbarNavigation';
 
 class Nav extends Component {
   render() {
@@ -7,16 +8,9 @@ class Nav extends Component {
         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <a className="navbar-brand bold blue-gray-text" href="#">Navbar</a>
+        <a className="navbar-brand bold blue-gray-text" href="/">Navbar</a>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item bold">
-              <a className="nav-link" href="./">Home</a>
-            </li>
-            <li className="nav-item bold">
-              <a className="nav-link" href="./about">About</a>
-            </li>
-          </ul>
+          <NavbarNavigation />
         </div>
       </nav>
     );

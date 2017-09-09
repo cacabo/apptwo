@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FooterNavigation from './FooterNavigation';
 
 class Footer extends Component {
   render() {
@@ -19,14 +20,7 @@ class Footer extends Component {
               <p className="bold">
                 Navigation
               </p>
-              <ul className="clean-list">
-                <li>
-                  <a href="/" className="blue-gray-text">Home</a>
-                </li>
-                <li>
-                  <a href="/about" className="blue-gray-text">About</a>
-                </li>
-              </ul>
+              <FooterNavigation />
             </div>
           </div>
         </div>
