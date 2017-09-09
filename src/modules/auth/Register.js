@@ -34,17 +34,23 @@ class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.username, this.state.password)
+    let noErr = true;
+    firebase.auth().createUserWithEmailAndPassword(this.state.username,
+        this.state.password).catch((error) => {
+            noErr = false;
+            alert(error.message);
+            console.log('Error registering with firebase', error.code, error.message);
+        })
       .then(() => {
-        console.log("Hello");
-        const user = firebase.auth().currentUser;
-        console.log("Hello" + user);
-        firebase
-          .database()
-          .ref(`users/${user.uid}`)
-          .set({ isWorking: true });
+        if (noErr) {
+            console.log("Hello");
+            const user = firebase.auth().currentUser;
+            console.log("Hello" + user);
+            firebase
+              .database()
+              .ref(`/users/${user.uid}`)
+              .set({ isWorking: true });
+        }
       })
       .catch(error => {
         alert(error.message);

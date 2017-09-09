@@ -11,4 +11,10 @@ var config = {
 };
 
 const firebaseApp = firebase.initializeApp(config);
-export default firebaseApp;
+const database = firebase.database();
+
+// export default firebaseApp;
+export {
+    firebaseApp,
+    database,
+};
