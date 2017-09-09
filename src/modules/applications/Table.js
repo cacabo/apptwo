@@ -1,7 +1,53 @@
+import firebase from "firebase";
 import React, { Component } from "react";
-import Row from './Row';
+import Row from "./Row";
 
 class Table extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      applications: ""
+    };
+  }
+  componentDidMount() {
+    const user = firebase.auth().currentUser;
+    const database = firebase.database();
+    const ref = database
+      .ref(`users/${user.uid}/applications`)
+      .once("value")
+      .then(snapshot => {
+        const applications = snapshot.val();
+        console.log(applications);
+        this.setState({
+          applications
+        });
+      });
+  }
+
+  displayRow(key, count) {
+    const application = this.state.applications[key];
+    console.log("app", application);
+    return (
+      <Row
+        key={key}
+        id={count}
+        title={application.title}
+        company={application.company}
+        deadline={application.deadline}
+      />
+    );
+  }
+
+  displayRows() {
+    var returnValue = [];
+    var count = 1;
+    for (const key in this.state.applications) {
+      returnValue.push(this.displayRow(key, count));
+      count += 1;
+    }
+    return returnValue;
+  }
+
   render() {
     return (
       <div className="row">
@@ -16,30 +62,14 @@ class Table extends Component {
                   <th>Deadline</th>
                 </tr>
               </thead>
-              <tbody>
-                <Row
-                  id="1"
-                  title="Product Management and Analytics Intern"
-                  company="Capital One"
-                  deadline="9/9/17"
-                />
-                <Row
-                  id="2"
-                  title="Business Analyst Intern"
-                  company="CB Insights"
-                  deadline="9/12/17"
-                />
-                <Row
-                  id="3"
-                  title="Software Engineering Intern"
-                  company="Honey"
-                  deadline="9/30/17"
-                />
-              </tbody>
+              <tbody>{this.displayRows()}</tbody>
             </table>
           </div>
 
-          <a href="/applications/new" className="btn bold purple shade-2 hover white-text marg-top-1">
+          <a
+            href="/applications/new"
+            className="btn bold purple shade-2 hover white-text marg-top-1"
+          >
             New application
           </a>
         </div>
