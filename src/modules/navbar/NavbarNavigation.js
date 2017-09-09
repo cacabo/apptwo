@@ -8,7 +8,7 @@ class NavbarNavigation extends Component {
       .signOut()
       .then(() => {
         // Sign-out successful
-        window.location = '/';
+        window.location = '/login';
       })
       .catch(error => {
         // An error happened.
