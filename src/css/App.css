@@ -1,3 +1,15 @@
+.min-height {
+  min-height: calc(100vh - 50px)
+}
+
 .blue-gray-text {
   color: #8898aa !important;
+}
+
+.bord-top-blue-gray {
+  border-top: 1px solid #dee8f4;
+}
+
+.bord-bot-blue-gray {
+  border-bottom: 1px solid #dee8f4;
 }

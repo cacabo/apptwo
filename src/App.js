@@ -10,12 +10,12 @@ class App extends Component {
       <div className="App">
         <Nav />
 
-        <div className="container">
+        <div className="container min-height">
           <div className="space-2"></div>
-          <h2 className="">
+          <h2>
             Welcome to AppTwo
           </h2>
-          <p className="">
+          <p>
             This is lit as fucking balls.
           </p>
           <div className="space-2"></div>
