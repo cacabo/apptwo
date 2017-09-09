@@ -49,6 +49,17 @@
   border-color: #6772e5 !important;
 }
 
+label {
+  margin-bottom: 0rem;
+  transition: all 0.2s ease;
+}
+
+.form-control {
+  border-radius: 0px;
+  border-width: 0px;
+  border-bottom-width: 2px;
+}
+
 /* navbar */
 .navbar .navbar-toggler {
   outline: 0 !important;
