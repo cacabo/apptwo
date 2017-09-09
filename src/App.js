@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase from "firebase";
 import { firebaseApp } from "./firebase.js";
 
@@ -51,6 +51,8 @@ class App extends Component {
                   <Route exact path="/user" component={User} />
                   <Route exact path="/applications" component={Table} />
                   <Route exact path="/applications/:id" component={Application} />
+                  <Route exact path="/register" component={() => {}} />
+                  <Route exact path="/login" component={() => {}} />
                   <Route exact path="/404" component={NotFound} />
                   <Route path='*' exact={true} component={NotFound} />
                 </Switch>

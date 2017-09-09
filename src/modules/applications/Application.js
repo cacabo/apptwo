@@ -5,10 +5,15 @@ class Application extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <h2>Job title</h2>
-          <p>Company name</p>
-          <p>Location</p>
-          <p>Status</p>
+          <h2>
+            { this.props.title ? this.props.title : 'No title' }
+          </h2>
+          <p>
+            { this.props.company ? this.props.company : 'No company' }
+          </p>
+          <p>
+            { this.props.deadline ? this.props.deadline : 'No deadline' }
+          </p>
         </div>
       </div>
     );

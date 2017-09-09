@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import firebase from "firebase";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     console.log("Props");
     console.log(this.props);
