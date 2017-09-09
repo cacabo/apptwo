@@ -14,6 +14,7 @@ class NavbarNavigation extends Component {
       .signOut()
       .then(() => {
         // Sign-out successful
+        window.location = '/';
       })
       .catch(error => {
         // An error happened.
@@ -59,7 +60,7 @@ class NavbarNavigation extends Component {
         {!this.state.isLoggedIn ? (
           <li className="nav-item bold">
             <a className="nav-link" href="/register">
-              Regsiter
+              Register
             </a>
           </li>
         ) : (
