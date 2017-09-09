@@ -12,7 +12,7 @@ class Table extends Component {
   }
   componentDidMount() {
     $('.fade-in').delay(100).fadeIn(200);
-    
+
     const user = firebase.auth().currentUser;
     const database = firebase.database();
     const ref = database
@@ -69,9 +69,10 @@ class Table extends Component {
             </table>
           </div>
 
+          <div className="space-1"></div>
           <a
             href="/applications/new"
-            className="btn bold purple shade-2 hover white-text marg-top-1"
+            className="fade-in btn bold purple shade-2 hover white-text"
           >
             New application
           </a>
