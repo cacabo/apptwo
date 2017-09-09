@@ -17,6 +17,8 @@ class Login extends Component {
   }
 
   componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+    
     $('.form-control').focus(function() {
       $(this).prev('label').addClass('purple-text');
     });
@@ -65,7 +67,7 @@ class Login extends Component {
   render() {
     return (
       <ResCol>
-        <div className="white pad-2 shade-1 round-1">
+        <div className="fade-in white pad-2 shade-1 round-1">
           <form onSubmit={this.handleSubmit}>
             <h2 className="marg-bot-1">New application</h2>
 
