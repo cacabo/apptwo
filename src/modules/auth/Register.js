@@ -52,7 +52,15 @@ class Register extends Component {
           firebase
             .database()
             .ref(`/users/${user.uid}`)
-            .set({ isWorking: true });
+            .set({
+              applications: {
+                1: {
+                  title: "Job Title",
+                  company: "Company",
+                  deadline: "Tomorrow :O"
+                }
+              }
+            });
         }
       })
       .catch(error => {
