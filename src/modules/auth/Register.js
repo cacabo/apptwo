@@ -73,6 +73,12 @@ class Register extends Component {
         }
       })
       .catch(error => {
+        $('#errors').html(`<div class="alert alert-danger">
+          <h3>There was an issue registering your account</h3>
+          <p>Check the form and try again.</p>
+          <p>${error.message}</p>
+        </div>`);
+
         alert(error.message);
         console.log(
           "Error registering with firebase",
@@ -87,6 +93,8 @@ class Register extends Component {
         <div className="white shade-1 round-1 pad-2">
           <form onSubmit={this.handleSubmit}>
             <h2 className="marg-bot-1">Register</h2>
+
+            <div id="errors"></div>
 
             <label>Email</label>
             <input

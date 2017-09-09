@@ -46,7 +46,11 @@ class Login extends Component {
       .signInWithEmailAndPassword(this.state.username, this.state.password)
       .catch(error => {
         if (error) {
-          alert(error.message);
+          $('#errors').html(`<div class="alert alert-danger">
+            <h3>There was an issue logging into your account</h3>
+            <p>Check the form and try again.</p>
+            <p>${error.message}</p>
+          </div>`);
         } else {
           console.log("in else");
         }
@@ -59,6 +63,8 @@ class Login extends Component {
         <div className="white pad-2 shade-1 round-1">
           <form onSubmit={this.handleSubmit}>
             <h2 className="marg-bot-1">Login</h2>
+
+            <div id="errors"></div>
 
             <label>Email</label>
             <input
