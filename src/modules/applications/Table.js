@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import React, { Component } from "react";
 import Row from "./Row";
+import $ from 'jquery';
 
 class Table extends Component {
   constructor(props) {
@@ -10,6 +11,8 @@ class Table extends Component {
     };
   }
   componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+    
     const user = firebase.auth().currentUser;
     const database = firebase.database();
     const ref = database
