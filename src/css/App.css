@@ -9,6 +9,10 @@
   margin-left: 0;
 }
 
+.fade-in {
+  display: none;
+}
+
 /* colors */
 .blue-gray-text {
   color: #8898aa !important;

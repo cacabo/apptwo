@@ -23,7 +23,7 @@ class Home extends Component {
             {
               (!this.props.isLoggedIn)
               ?
-              <div className="marg-top-2">
+              <div className="marg-top-2 fade-in">
                 <a href="/login" className="btn purple-text white bold shade-2 hover marg-right-1">
                   Login
                 </a>
