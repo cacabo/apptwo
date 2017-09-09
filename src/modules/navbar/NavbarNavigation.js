@@ -4,7 +4,9 @@ import firebase from "firebase";
 class NavbarNavigation extends Component {
   constructor(props) {
     super(props);
+    this.state = { isLoggedIn: false };
   }
+
   logout() {
     console.log("logging you out!");
     firebase
@@ -18,6 +20,18 @@ class NavbarNavigation extends Component {
         alert(error.message);
       });
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        console.log("user": user);
+        this.setState({
+          isLoggedIn: true,
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <ul className="navbar-nav">
@@ -32,9 +46,17 @@ class NavbarNavigation extends Component {
           </a>
         </li>
         <li className="nav-item bold">
-          <a className="nav-link" onClick={() => this.logout()}>
-            Logout
-          </a>
+          {
+            (this.state.isLoggedIn)
+            ?
+            <a className="nav-link" onClick={() => this.logout()}>
+              Logout
+            </a>
+            :
+            <a className="nav-link" href="/login">
+              Login
+            </a>
+          }
         </li>
       </ul>
     );

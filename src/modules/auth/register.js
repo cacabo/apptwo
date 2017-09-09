@@ -1,17 +1,10 @@
 import firebase from "firebase";
-import { firebaseApp } from "../../firebase.js";
 
 import React, { Component } from "react";
 
 class Register extends Component {
   constructor(props) {
     super(props);
-
-    firebase.auth().onAuthStateChanged(user => {
-      if(user) {
-        window.location = '/';
-      }
-    });
 
     this.state = { username: "", password: "" };
 
@@ -20,10 +13,20 @@ class Register extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        window.location = '/';
+      }
+    });
+  }
+
   handleChangeUsername(event) {
     console.log(event.target.value);
     this.setState({ username: event.target.value });
   }
+
   handleChangePassword(event) {
     this.setState({ password: event.target.value });
   }

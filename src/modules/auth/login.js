@@ -5,13 +5,6 @@ class Login extends Component {
   constructor(props) {
     super(props);
 
-    firebase.auth().onAuthStateChanged(user => {
-      if(user) {
-        console.log(user);
-        window.location = '/';
-      }
-    });
-
     this.state = { username: "", password: "" };
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -19,10 +12,21 @@ class Login extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        console.log(user);
+        window.location = '/';
+      }
+    });
+  }
+
   handleChangeUsername(event) {
     console.log(event.target.value);
     this.setState({ username: event.target.value });
   }
+
   handleChangePassword(event) {
     this.setState({ password: event.target.value });
   }

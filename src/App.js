@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import firebase from "firebase";
+import { firebaseApp } from "./firebase.js";
 
 import "./css/strapper.min.css";
 import "./css/App.css";
