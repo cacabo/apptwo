@@ -15,7 +15,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description":
+    "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "devDependencies": {
     "eslint": "^4.6.1",
@@ -28,11 +29,7 @@
     "type": "git",
     "url": "git+https://github.com/ccabo1/apptwo.git"
   },
-  "keywords": [
-    "app",
-    "apptwo",
-    "applications"
-  ],
+  "keywords": ["app", "apptwo", "applications"],
   "author": "Cameron Cabo, Terry Jo, James Xue, Adam Ripley",
   "license": "MIT",
   "bugs": {

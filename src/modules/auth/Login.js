@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import React, { Component } from "react";
-import ResCol from '../helper/ResCol';
+import ResCol from "../helper/ResCol";
 
 class Login extends Component {
   constructor(props) {
@@ -16,9 +16,9 @@ class Login extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      if(user) {
+      if (user) {
         console.log(user);
-        window.location = '/';
+        window.location = "/";
       }
     });
   }
@@ -51,11 +51,9 @@ class Login extends Component {
     return (
       <ResCol>
         <form onSubmit={this.handleSubmit}>
-          <h2 className="marg-bot-1">Login</h2>
+          <h2>Login</h2>
 
-          <label>
-            Email
-          </label>
+          <label>Email</label>
           <input
             type="email"
             className="form-control marg-bot-1"
@@ -64,9 +62,7 @@ class Login extends Component {
             required="true"
           />
 
-          <label>
-            Password
-          </label>
+          <label>Password</label>
           <input
             type="password"
             className="form-control marg-bot-2"
@@ -74,10 +70,17 @@ class Login extends Component {
             onChange={this.handleChangePassword}
             required="true"
           />
-          <input type="submit" className="btn white shade-3 hover cursor white-text purple bold" value="Submit" />
+          <input
+            type="submit"
+            className="btn white shade-3 hover cursor white-text purple bold"
+            value="Submit"
+          />
 
           <p className="blue-gray-text marg-top-1">
-            Don't have an account? <a href="./register" className="purple-text">Register here.</a>
+            Don't have an account?{" "}
+            <a href="./register" className="purple-text">
+              Register here.
+            </a>
           </p>
         </form>
       </ResCol>

@@ -24,9 +24,9 @@ class NavbarNavigation extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log("user": user);
+        console.log(("user": user));
         this.setState({
-          isLoggedIn: true,
+          isLoggedIn: true
         });
       }
     });
@@ -46,29 +46,25 @@ class NavbarNavigation extends Component {
           </a>
         </li>
         <li className="nav-item bold">
-          {
-            (this.state.isLoggedIn)
-            ?
+          {this.state.isLoggedIn ? (
             <a className="nav-link" onClick={() => this.logout()}>
               Logout
             </a>
-            :
+          ) : (
             <a className="nav-link" href="/login">
               Login
             </a>
-          }
+          )}
         </li>
-        {
-          (!this.state.isLoggedIn)
-          ?
+        {!this.state.isLoggedIn ? (
           <li className="nav-item bold">
             <a className="nav-link" href="/register">
               Regsiter
             </a>
           </li>
-          :
-          ''
-        }
+        ) : (
+          ""
+        )}
       </ul>
     );
   }

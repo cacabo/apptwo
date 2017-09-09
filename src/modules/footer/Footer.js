@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import FooterNavigation from './FooterNavigation';
+import React, { Component } from "react";
+import FooterNavigation from "./FooterNavigation";
 
 class Footer extends Component {
   render() {
@@ -8,18 +8,14 @@ class Footer extends Component {
         <div className="container blue-gray-text">
           <div className="row">
             <div className="col-12 col-md-4">
-              <h2>
-                AppTwo
-              </h2>
+              <h2>AppTwo</h2>
               <p>
                 Created by Cameron Cabo, Terry Jo, James Xue, and Adam Ripley.
               </p>
             </div>
 
             <div className="col-12 col-md-4">
-              <p className="bold">
-                Navigation
-              </p>
+              <p className="bold">Navigation</p>
               <FooterNavigation />
             </div>
           </div>
