@@ -4,6 +4,13 @@ import React, { Component } from "react";
 class Login extends Component {
   constructor(props) {
     super(props);
+
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        window.location = '/';
+      }
+    });
+
     this.state = { username: "", password: "" };
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -40,23 +47,25 @@ class Login extends Component {
         <h2>Login</h2>
 
         <label>
-          Username
+          Email
         </label>
         <input
-          type="text"
+          type="email"
           className="form-control marg-bot-1"
           value={this.state.username}
           onChange={this.handleChangeUsername}
+          required="true"
         />
 
         <label>
           Password
         </label>
         <input
-          type="text"
+          type="password"
           className="form-control marg-bot-2"
           value={this.state.password}
           onChange={this.handleChangePassword}
+          required="true"
         />
         <input type="submit" className="btn white shade-3 hover cursor white-text purple bold" value="Submit" />
 

@@ -1,4 +1,4 @@
-import * as firebase from "firebase";
+import firebase from "firebase";
 import { firebaseApp } from "../../firebase.js";
 
 import React, { Component } from "react";
@@ -6,6 +6,13 @@ import React, { Component } from "react";
 class Register extends Component {
   constructor(props) {
     super(props);
+
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        window.location = '/';
+      }
+    });
+
     this.state = { username: "", password: "" };
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -42,23 +49,25 @@ class Register extends Component {
         <h2>Register</h2>
 
         <label>
-          Username
+          Email
         </label>
         <input
-          type="text"
+          type="email"
           className="form-control marg-bot-1"
           value={this.state.username}
           onChange={this.handleChangeUsername}
+          required="true"
         />
 
         <label>
           Password
         </label>
         <input
-          type="text"
+          type="password"
           className="form-control marg-bot-2"
           value={this.state.password}
           onChange={this.handleChangePassword}
+          required="true"
         />
         <input type="submit" className="btn purple bold shade-3 hover white-text bold" value="Submit" />
 

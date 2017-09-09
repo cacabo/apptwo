@@ -9,3 +9,4 @@ Say goodbye to a map of excel sheets and word docs.
 - [ ] Backend
 - [ ] Views
 - [ ] More meta tags
+- [ ] Flash notifications
