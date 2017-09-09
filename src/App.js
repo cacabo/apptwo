@@ -4,6 +4,7 @@ import {
  Route,
  Link
 } from 'react-router-dom'
+import Register from "./components/register.js";
 import './css/strapper.min.css';
 import './css/App.css';
 
@@ -20,6 +21,7 @@ import Table from './modules/applications/Table'
 class App extends Component {
   render() {
     return (
+<<<<<<< HEAD
       <Router>
         <div className="App">
           <Nav />
@@ -35,6 +37,16 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
+=======
+      <div className="App">
+        <div className="App-header">
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          {/* <h2>Welcome to React</h2> */}
+          <Register />
+        </div>
+        {/* <p className="App-intro">Hello World!</p> */}
+      </div>
+>>>>>>> loginshit
     );
   }
 }
