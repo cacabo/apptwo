@@ -37,6 +37,15 @@ class Register extends Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.username, this.state.password)
+      .then(() => {
+        console.log("Hello");
+        const user = firebase.auth().currentUser;
+        console.log("Hello" + user);
+        firebase
+          .database()
+          .ref(`users/${user.uid}`)
+          .set({ isWorking: true });
+      })
       .catch(error => {
         alert(error.message);
         console.log(
@@ -73,9 +82,11 @@ class Register extends Component {
             <input
               type="submit"
               className={
-                this.state.password.length && this.state.username.length ?
-                  "btn white shade-3 hover cursor white-text purple bold" :
+                this.state.password.length && this.state.username.length ? (
+                  "btn white shade-3 hover cursor white-text purple bold"
+                ) : (
                   "disabled btn white shade-3 hover cursor white-text purple bold"
+                )
               }
               value="Submit"
             />
