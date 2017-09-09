@@ -46,7 +46,6 @@ class Register extends Component {
         );
       });
   }
-
   render() {
     return (
       <ResCol>
