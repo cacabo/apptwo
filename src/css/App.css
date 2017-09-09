@@ -69,3 +69,20 @@ label {
 .navbar {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.0375);
 }
+
+/* flash and alerts */
+.flash {
+  display: none;
+  background: #ff8080;
+  padding: 0.25rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+}
+
+.alert {
+  border: 2px solid #ff8080;
+  color: #ff8080;
+}

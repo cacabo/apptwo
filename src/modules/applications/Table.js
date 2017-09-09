@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import Row from './Row';
+import $ from 'jquery'
 
 class Table extends Component {
+  componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+  }
+
   render() {
     return (
       <div className="row">
         <div className="col-12">
-          <div className="white round-1 shade-1">
+          <div className="fade-in white round-1 shade-1">
             <table className="table">
               <thead>
                 <tr>

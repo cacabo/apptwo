@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import $ from 'jquery';
 
 class Home extends Component {
+  componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+  }
+
   render() {
     return (
       <div className="row">
