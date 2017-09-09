@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import firebase from "firebase";
 import { firebaseApp } from "./firebase.js";
 
@@ -16,6 +16,8 @@ import Application from "./modules/applications/Application";
 import Table from "./modules/applications/Table";
 import Login from "./modules/auth/Login";
 import Register from "./modules/auth/Register";
+import NotFound from "./modules/NotFound";
+import User from "./modules/users/User";
 
 // Application
 class App extends Component {
@@ -26,12 +28,17 @@ class App extends Component {
           <Nav />
 
           <PageContainer>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/application" component={Application} />
-            <Route exact path="/applications" component={Table} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/applications" component={Table} />
+              <Route exact path="/applications/:id" component={Application} />
+              <Route exact path="/user" component={User} />
+              <Route exact path="/404" component={NotFound} />
+              <Route path='*' exact={true} component={NotFound} />
+            </Switch>
           </PageContainer>
 
           <Footer />

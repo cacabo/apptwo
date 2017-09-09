@@ -63,7 +63,11 @@ class NavbarNavigation extends Component {
             </a>
           </li>
         ) : (
-          ""
+          <li className="nav-item bold">
+            <a className="nav-link" href="/applications">
+              Applications
+            </a>
+          </li>
         )}
       </ul>
     );
