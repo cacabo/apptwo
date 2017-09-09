@@ -46,7 +46,7 @@ class App extends Component {
             {
               this.state.isLoggedIn ? (
                 <Switch>
-                  <Route exact path="/" component={Home} />
+                  <Route exact path="/" component={() => (<Home isLoggedIn={true} />)} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/user" component={User} />
                   <Route exact path="/applications" component={Table} />
@@ -56,7 +56,7 @@ class App extends Component {
                 </Switch>
               ) : (
                 <Switch>
-                  <Route exact path="/" component={Home} />
+                  <Route exact path="/" component={() => (<Home isLoggedIn={false} />)} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
