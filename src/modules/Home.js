@@ -4,11 +4,6 @@ import firebase from "firebase";
 class Home extends Component {
   constructor(props) {
     super(props);
-    firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        window.location = "/login";
-      }
-    });
   }
   render() {
     return (

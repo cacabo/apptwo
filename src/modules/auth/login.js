@@ -51,7 +51,7 @@ class Login extends Component {
     return (
       <ResCol>
         <form onSubmit={this.handleSubmit}>
-          <h2>Login</h2>
+          <h2 className="marg-bot-1">Login</h2>
 
           <label>
             Email

@@ -58,6 +58,17 @@ class NavbarNavigation extends Component {
             </a>
           }
         </li>
+        {
+          (!this.state.isLoggedIn)
+          ?
+          <li className="nav-item bold">
+            <a className="nav-link" href="/register">
+              Regsiter
+            </a>
+          </li>
+          :
+          ''
+        }
       </ul>
     );
   }
