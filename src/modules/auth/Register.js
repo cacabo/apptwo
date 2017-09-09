@@ -17,6 +17,8 @@ class Register extends Component {
   }
 
   componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         window.location = "/";
@@ -73,10 +75,10 @@ class Register extends Component {
         }
       })
       .catch(error => {
-        $('#errors').html(`<div class="alert alert-danger">
-          <h3>There was an issue registering your account</h3>
+        $('#errors').html(`<div class="alert">
+          <h4>There was an issue registering your account</h4>
           <p>Check the form and try again.</p>
-          <p>${error.message}</p>
+          <p class="marg-bot-0">${error.message}</p>
         </div>`);
 
         alert(error.message);
@@ -90,7 +92,7 @@ class Register extends Component {
   render() {
     return (
       <ResCol>
-        <div className="white shade-1 round-1 pad-2">
+        <div className="fade-in white shade-1 round-1 pad-2">
           <form onSubmit={this.handleSubmit}>
             <h2 className="marg-bot-1">Register</h2>
 

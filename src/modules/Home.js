@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+import $ from 'jquery';
 
 class Home extends Component {
-  render() {
-    console.log("Props");
-    console.log(this.props);
+  componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+  }
 
+  render() {
     return (
       <div className="row">
         <div className="col-12">
-          <div className="white shade-1 pad-2 round-1">
+          <div className="fade-in white shade-1 pad-2 round-1">
             <h2>AppTwo</h2>
             <p>
               An application for applications. We make applying for jobs, clubs,

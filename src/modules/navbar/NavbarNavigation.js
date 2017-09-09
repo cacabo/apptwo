@@ -7,7 +7,6 @@ class NavbarNavigation extends Component {
       .auth()
       .signOut()
       .then(() => {
-        // Sign-out successful
         window.location = '/login';
       })
       .catch(error => {
@@ -41,7 +40,7 @@ class NavbarNavigation extends Component {
             </a>
           </li>
           <li className="nav-item bold">
-            <a className="nav-link" href="" onClick={() => this.logout()}>
+            <a className="nav-link cursor" onClick={() => this.logout()}>
               Logout
             </a>
           </li>
