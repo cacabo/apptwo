@@ -68,12 +68,10 @@ class App extends Component {
     console.log('in routes');
 
     if (this.state.isLoggedIn === null) {
-      console.log('Null bitches');
       return (
         <PageContainer />
       );
     } else if (this.state.isLoggedIn) {
-      console.log('True bitches');
       return (
         <PageContainer>
           <Switch>
@@ -91,7 +89,6 @@ class App extends Component {
         </PageContainer>
       );
     } else {
-      console.log('False bitches!');
       return (
         <PageContainer>
           <Switch>
