@@ -14,7 +14,7 @@ __Functionality__
 - [ ] Fix issue with async navbar loading
 
 __Views__
-- [ ] Link from table to application show page
+- [x] Link from table to application show page
 - [ ] Build out user show page
 - [ ] New component form
 - [ ] Edit component form
