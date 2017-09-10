@@ -18,9 +18,9 @@ class EditApplication extends Component {
           application
         });
       });
-      
-    this.state = { title: "" + application.title , company: "" + application.company, deadline: ""
-   + application.deadline };
+
+    this.state = { title: "" + this.state.application.title , company: "" + this.state.application.company, deadline: ""
+   + this.state.application.deadline };
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
