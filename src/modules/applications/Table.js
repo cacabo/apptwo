@@ -107,6 +107,13 @@ class Table extends Component {
   this.setState({
     applications: newAppObj
   });
+  handleDelete(key) {
+    const user = firebase.auth().currentUser;
+    const database = firebase.database();
+    const ref = database
+      .ref(`users/${user.uid}/applications`)
+      .child(key)
+      .remove();
   }
 
   displayRow(key, count) {
@@ -119,6 +126,7 @@ class Table extends Component {
         title={application.title}
         company={application.company}
         deadline={moment(application.deadline).format("ddd M/D/YY, h:mma")}
+        onClick={() => this.handleDelete(key)}
       />
     );
   }
@@ -146,16 +154,9 @@ class Table extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-<<<<<<< HEAD
-                  <th>Job Title</th>
-                  <th>Company</th>
-                  <th>Deadline</th>
-                  <th></th>
-=======
                   <th onClick={() => {this.sortByPosition()}}>Job Title</th>
                   <th onClick={() => {this.sortByCompany()}}>Company</th>
                   <th onClick={() => {this.sortByDeadline()}}>Deadline</th>
->>>>>>> search
                 </tr>
               </thead>
               <tbody>{this.displayRows()}</tbody>
