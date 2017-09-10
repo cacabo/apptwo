@@ -6,7 +6,12 @@ class Row extends Component {
       <tr className="table-row">
         <td>{this.props.counter}</td>
         <td>
-          <a className="purple-text" href="/applications/${this.props.id}">{this.props.title}</a>
+          <a
+            className="purple-text"
+            href={"/applications/" + this.props.id}
+          >
+            {this.props.title}
+          </a>
         </td>
         <td>{this.props.company}</td>
         <td>{this.props.deadline}</td>
