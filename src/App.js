@@ -36,7 +36,80 @@ class App extends Component {
     });
   }
 
+  // <PageContainer>
+  //   {
+  //     this.state.isLoggedIn ? (
+  //       <Switch>
+  //         <Route exact path="/" component={() => (<Home isLoggedIn={true} />)} />
+  //         <Route exact path="/about" component={About} />
+  //         <Route exact path="/user" component={User} />
+  //         <Route exact path="/applications" component={Table} />
+  //         <Route exact path="/applications/new" component={NewApplication} />
+  //         <Route exact path="/applications/:id" component={Application} />
+  //         <Route exact path="/register" component={() => {}} />
+  //         <Route exact path="/login" component={() => {}} />
+  //         <Route exact path="/404" component={NotFound} />
+  //         <Route path='*' exact={true} component={NotFound} />
+  //       </Switch>
+  //     ) : (
+  //       <Switch>
+  //         <Route exact path="/" component={() => (<Home isLoggedIn={false} />)} />
+  //         <Route exact path="/about" component={About} />
+  //         <Route exact path="/register" component={Register} />
+  //         <Route exact path="/login" component={Login} />
+  //         <Route exact path="/404" component={NotFound} />
+  //         <Route path='*' exact={true} component={NotFound} />
+  //       </Switch>
+  //     )
+  //   }
+  // </PageContainer>
+
+  routes() {
+    console.log('in routes');
+
+    if (this.state.isLoggedIn === null) {
+      console.log('Null bitches');
+      return (
+        <PageContainer />
+      );
+    } else if (this.state.isLoggedIn) {
+      console.log('True bitches');
+      return (
+        <PageContainer>
+          <Switch>
+            <Route exact path="/" component={() => (<Home isLoggedIn={true} />)} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/user" component={User} />
+            <Route exact path="/applications" component={Table} />
+            <Route exact path="/applications/new" component={NewApplication} />
+            <Route exact path="/applications/:id" component={Application} />
+            <Route exact path="/register" component={() => {}} />
+            <Route exact path="/login" component={() => {}} />
+            <Route exact path="/404" component={NotFound} />
+            <Route path='*' exact={true} component={NotFound} />
+          </Switch>
+        </PageContainer>
+      );
+    } else {
+      console.log('False bitches!');
+      return (
+        <PageContainer>
+          <Switch>
+            <Route exact path="/" component={() => (<Home isLoggedIn={false} />)} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/404" component={NotFound} />
+            <Route path='*' exact={true} component={NotFound} />
+          </Switch>
+        </PageContainer>
+      );
+    }
+  }
+
   render() {
+    console.log('in render');
+
     return (
       <Router>
         <div className="App">
@@ -44,33 +117,7 @@ class App extends Component {
 
           <div id="flash"></div>
 
-          <PageContainer>
-            {
-              this.state.isLoggedIn ? (
-                <Switch>
-                  <Route exact path="/" component={() => (<Home isLoggedIn={true} />)} />
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/user" component={User} />
-                  <Route exact path="/applications" component={Table} />
-                  <Route exact path="/applications/new" component={NewApplication} />
-                  <Route exact path="/applications/:id" component={Application} />
-                  <Route exact path="/register" component={() => {}} />
-                  <Route exact path="/login" component={() => {}} />
-                  <Route exact path="/404" component={NotFound} />
-                  <Route path='*' exact={true} component={NotFound} />
-                </Switch>
-              ) : (
-                <Switch>
-                  <Route exact path="/" component={() => (<Home isLoggedIn={false} />)} />
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/404" component={NotFound} />
-                  <Route path='*' exact={true} component={NotFound} />
-                </Switch>
-              )
-            }
-          </PageContainer>
+          { this.routes() }
 
           <Footer />
         </div>
