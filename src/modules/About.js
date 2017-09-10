@@ -17,6 +17,12 @@ class Home extends Component {
             <p>
               An app to make applications easier.
             </p>
+            <p>
+              Made by four roommates in a dorm room. Making your life easier one step at a time.
+            </p>
+            <p>
+              Lit.
+            </p>
           </div>
         </div>
       </div>
