@@ -8,10 +8,10 @@ Say goodbye to a reckless mess of Excel sheets and Word docs.
 
 __Functionality__
 - [ ] User delete account
-- [ ] User edit application
+- [x] User edit application
 - [x] User delete application
 - [ ] User verification?
-- [ ] Fix issue with async navbar loading
+- [x] Fix issue with async navbar loading
 
 __Views__
 - [x] Link from table to application show page
@@ -19,24 +19,27 @@ __Views__
 - [ ] New component form
 - [ ] Edit component form
 - [ ] Delete component form
-- [ ] Edit article form
-- [ ] Delete article button
+- [x] Edit article form
+- [x] Delete article button
 
 __Backend__
-- [ ] Set up the structure for component
-  - [ ] ApplicationID
-  - [ ] Time stamp
+- [ ] Notes
   - [ ] Title
-  - [ ] Description
-    - [ ] Markdown language (?)
+  - [ ] Body (optional)
+- [ ] People
+  - [ ] LinkedIn (optional)
+  - [ ] Email (optional)
+  - [ ] Name
+  - [ ] Notes
+  
 - [ ] Firebase / google analytics
 - [ ] Add more information for applications
-  - [ ] Link (where to submit)
-  - [ ] Status (enumerated type?)
-  - [ ] Priority (integer)
-- [ ] Search by name or company (handle with query strings?)
-- [ ] Sort by name or company or deadline
+  - [ ] Link (where to submit / online job posting)
+  - [ ] Status (enumerated type?) LATER
+  - [ ] Priority (integer) LATER
+- [x] Search by name or company (handle with query strings?)
+- [x] Sort by name or company or deadline
 
 __Down the line__
-- [ ] LinkedIn (scarping?)
+- [ ] LinkedIn (scraping?)
 - [ ] Referrals
