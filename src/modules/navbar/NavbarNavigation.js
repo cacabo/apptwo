@@ -11,7 +11,6 @@ class NavbarNavigation extends Component {
         window.location = '/login';
       })
       .catch(error => {
-        // An error happened.
         alert(error.message);
       });
   }
@@ -25,11 +24,6 @@ class NavbarNavigation extends Component {
           <li className="nav-item bold">
             <a className="nav-link" href="/">
               Home
-            </a>
-          </li>
-          <li className="nav-item bold">
-            <a className="nav-link" href="/about">
-              About
             </a>
           </li>
           <li className="nav-item bold">
@@ -55,11 +49,6 @@ class NavbarNavigation extends Component {
           <li className="nav-item bold">
             <a className="nav-link" href="/">
               Home
-            </a>
-          </li>
-          <li className="nav-item bold">
-            <a className="nav-link" href="/about">
-              About
             </a>
           </li>
           <li className="nav-item bold">

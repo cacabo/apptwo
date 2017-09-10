@@ -16,7 +16,7 @@ class Footer extends Component {
 
             <div className="col-12 col-md-4">
               <p className="bold">Navigation</p>
-              <FooterNavigation />
+              <FooterNavigation isLoggedIn={this.props.isLoggedIn} />
             </div>
           </div>
         </div>

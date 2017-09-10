@@ -13,7 +13,6 @@ import Nav from "./modules/navbar/Nav";
 import Footer from "./modules/footer/Footer";
 import PageContainer from "./modules/PageContainer";
 import Home from "./modules/Home";
-import About from "./modules/About";
 import Application from "./modules/applications/Application";
 import Table from "./modules/applications/Table";
 import Login from "./modules/auth/Login";
@@ -40,8 +39,6 @@ class App extends Component {
   }
 
   routes() {
-    console.log('in routes');
-
     if (this.state.isLoggedIn === null) {
       return (
         <PageContainer />
@@ -51,7 +48,6 @@ class App extends Component {
         <PageContainer>
           <Switch>
             <Route exact path="/" component={() => (<Home isLoggedIn={true} />)} />
-            <Route exact path="/about" component={About} />
             <Route exact path="/user" component={User} />
             <Route exact path="/applications" component={Table} />
             <Route exact path="/applications/:id/notes/new" component={NewNote} />
@@ -70,7 +66,6 @@ class App extends Component {
         <PageContainer>
           <Switch>
             <Route exact path="/" component={() => (<Home isLoggedIn={false} />)} />
-            <Route exact path="/about" component={About} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/404" component={NotFound} />
@@ -82,8 +77,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('in render');
-
     return (
       <Router>
         <div className="App">
@@ -93,7 +86,7 @@ class App extends Component {
 
           { this.routes() }
 
-          <Footer />
+          <Footer isLoggedIn={this.state.isLoggedIn} />
         </div>
       </Router>
     );
