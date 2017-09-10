@@ -13,6 +13,9 @@ class Table extends Component {
       isForwardDeadline: true,
       isForwardPosition: true,
       isForwardCompany: true,
+      sortedByDeadline: false,
+      sortedByPosition: false,
+      sortedByCompany: false,
     };
   }
   componentDidMount() {
@@ -73,6 +76,9 @@ class Table extends Component {
       // applications: newAppObj,
       relevantApps: newAppObj,
       isForwardDeadline: !this.state.isForwardDeadline,
+      sortedByDeadline: true,
+      sortedByCompany: false,
+      sortedByPosition: false,
     });
   }
 
@@ -103,6 +109,9 @@ class Table extends Component {
     // applications: newAppObj,
     relevantApps: newAppObj,
     isForwardPosition: !this.state.isForwardPosition,
+    sortedByDeadline: false,
+    sortedByCompany: false,
+    sortedByPosition: true,
   });
   }
 
@@ -133,6 +142,9 @@ class Table extends Component {
       // applications: newAppObj,
       relevantApps: newAppObj,
       isForwardCompany: !this.state.isForwardCompany,
+      sortedByDeadline: false,
+      sortedByCompany: true,
+      sortedByPosition: false,
     });
   }
 
@@ -159,6 +171,31 @@ class Table extends Component {
     this.setState({
       relevantApps,
     });
+  }
+
+  checkPosition() {
+    if (this.state.sortedByPosition) {
+      return "purple white-text";
+    } else {
+      return "inactive";
+    }
+  }
+
+  checkCompany() {
+    console.log('checking comp');
+    if (this.state.sortedByCompany) {
+      return "purple white-text";
+    } else {
+      return "inactive";
+    }
+  }
+
+  checkDeadline() {
+    if (this.state.sortedByDeadline) {
+      return "purple white-text";
+    } else {
+      return "inactive";
+    }
   }
 
   displayRow(key, count) {
@@ -201,9 +238,9 @@ class Table extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th onClick={() => {this.sortByPosition()}}>Job Title</th>
-                  <th onClick={() => {this.sortByCompany()}}>Company</th>
-                  <th onClick={() => {this.sortByDeadline()}}>Deadline</th>
+                  <th className={this.checkPosition()} onClick={() => {this.sortByPosition()}}>Job Title</th>
+                  <th className={this.checkCompany()} onClick={() => {this.sortByCompany()}}>Company</th>
+                  <th className={this.checkDeadline()} onClick={() => {this.sortByDeadline()}}>Deadline</th>
                 </tr>
               </thead>
               <tbody>{this.displayRows()}</tbody>
