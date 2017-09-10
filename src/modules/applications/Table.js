@@ -20,7 +20,6 @@ class Table extends Component {
       .once("value")
       .then(snapshot => {
         const applications = snapshot.val();
-        console.log(applications);
         this.setState({
           applications
         });
@@ -33,7 +32,8 @@ class Table extends Component {
     return (
       <Row
         key={key}
-        id={count}
+        id={key}
+        counter={count}
         title={application.title}
         company={application.company}
         deadline={application.deadline}

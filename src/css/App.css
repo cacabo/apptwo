@@ -86,3 +86,8 @@ label {
   border: 2px solid #ff8080;
   color: #ff8080;
 }
+
+/* table */
+.table-row:hover {
+  background: #f6f9fc;
+}
