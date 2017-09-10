@@ -7,9 +7,10 @@ class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      applications: ""
+      applications: "",
     };
   }
+
   componentDidMount() {
     $(".fade-in")
       .delay(100)

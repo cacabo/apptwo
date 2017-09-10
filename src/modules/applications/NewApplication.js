@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ResCol from "../helper/ResCol";
 import $ from "jquery";
 
-class Login extends Component {
+class NewApplication extends Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +18,7 @@ class Login extends Component {
 
   componentDidMount() {
     $('.fade-in').delay(100).fadeIn(200);
-    
+
     $('.form-control').focus(function() {
       $(this).prev('label').addClass('purple-text');
     });
@@ -115,4 +115,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default NewApplication;

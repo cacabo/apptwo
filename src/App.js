@@ -26,17 +26,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: null,
     };
   }
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          isLoggedIn: true
-        });
-      }
+      this.setState({ isLoggedIn: !!user });
     });
   }
 
