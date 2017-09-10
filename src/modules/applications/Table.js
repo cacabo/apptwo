@@ -1,7 +1,8 @@
 import firebase from "firebase";
 import React, { Component } from "react";
 import Row from "./Row";
-import $ from "jquery";
+import $ from 'jquery';
+import moment from 'moment';
 
 class Table extends Component {
   constructor(props) {
@@ -37,6 +38,77 @@ class Table extends Component {
       });
   }
 
+  sortByDeadline() {
+      let newApps = Object.assign({}, this.state.applications);
+      const sortable = [];
+      for(const key in newApps) {
+        if (newApps.hasOwnProperty(key)) {
+          sortable.push([key,newApps[key]]);
+        }
+      }
+      sortable.sort((a,b) => {
+        return moment(a[1].deadline).unix() - moment(b[1].deadline).unix();
+      });
+      const newAppObj = {};
+      for (var i = 0; i < sortable.length; i++) {
+        var key = sortable[i][0];
+        var value = sortable[i][1];
+        newAppObj[key] = value;
+    }
+    this.setState({
+      applications: newAppObj
+    });
+
+  }
+
+  sortByPosition() {
+    let newApps = Object.assign({}, this.state.applications);
+    const sortable = [];
+    for(const key in newApps) {
+      if (newApps.hasOwnProperty(key)) {
+        sortable.push([key,newApps[key]]);
+      }
+    }
+    sortable.sort((a,b) => {
+      const x = a[1].title.toLowerCase();
+      const y = b[1].title.toLowerCase();
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+    const newAppObj = {};
+    for (var i = 0; i < sortable.length; i++) {
+      var key = sortable[i][0];
+      var value = sortable[i][1];
+      newAppObj[key] = value;
+  }
+  this.setState({
+    applications: newAppObj
+  });
+  }
+
+  sortByCompany() {
+    let newApps = Object.assign({}, this.state.applications);
+    const sortable = [];
+    for(const key in newApps) {
+      if (newApps.hasOwnProperty(key)) {
+        sortable.push([key,newApps[key]]);
+      }
+    }
+    sortable.sort((a,b) => {
+      const x = a[1].company.toLowerCase();
+      const y = b[1].company.toLowerCase();
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+    const newAppObj = {};
+    for (var i = 0; i < sortable.length; i++) {
+      var key = sortable[i][0];
+      var value = sortable[i][1];
+      newAppObj[key] = value;
+  }
+  this.setState({
+    applications: newAppObj
+  });
+  }
+
   displayRow(key, count) {
     const application = this.state.applications[key];
     return (
@@ -46,7 +118,7 @@ class Table extends Component {
         counter={count}
         title={application.title}
         company={application.company}
-        deadline={application.deadline}
+        deadline={moment(application.deadline).format("ddd M/D/YY, h:mma")}
       />
     );
   }
@@ -74,10 +146,16 @@ class Table extends Component {
               <thead>
                 <tr>
                   <th>#</th>
+<<<<<<< HEAD
                   <th>Job Title</th>
                   <th>Company</th>
                   <th>Deadline</th>
                   <th></th>
+=======
+                  <th onClick={() => {this.sortByPosition()}}>Job Title</th>
+                  <th onClick={() => {this.sortByCompany()}}>Company</th>
+                  <th onClick={() => {this.sortByDeadline()}}>Deadline</th>
+>>>>>>> search
                 </tr>
               </thead>
               <tbody>{this.displayRows()}</tbody>
