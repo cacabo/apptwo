@@ -70,7 +70,6 @@ class Table extends Component {
         newAppObj[key] = value;
     }
     this.setState({
-      // applications: newAppObj,
       relevantApps: newAppObj,
       isForwardDeadline: !this.state.isForwardDeadline,
     });
@@ -98,12 +97,11 @@ class Table extends Component {
       var key = sortable[i][0];
       var value = sortable[i][1];
       newAppObj[key] = value;
-  }
-  this.setState({
-    // applications: newAppObj,
-    relevantApps: newAppObj,
-    isForwardPosition: !this.state.isForwardPosition,
-  });
+    }
+    this.setState({
+      relevantApps: newAppObj,
+      isForwardPosition: !this.state.isForwardPosition,
+    });
   }
 
   sortByCompany() {
@@ -201,9 +199,9 @@ class Table extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th onClick={() => {this.sortByPosition()}}>Job Title</th>
-                  <th onClick={() => {this.sortByCompany()}}>Company</th>
-                  <th onClick={() => {this.sortByDeadline()}}>Deadline</th>
+                  <th className="cursor" onClick={() => {this.sortByPosition()}}>Job Title</th>
+                  <th className="cursor" onClick={() => {this.sortByCompany()}}>Company</th>
+                  <th className="cursor" onClick={() => {this.sortByDeadline()}}>Deadline</th>
                 </tr>
               </thead>
               <tbody>{this.displayRows()}</tbody>
