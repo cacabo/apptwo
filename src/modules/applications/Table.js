@@ -11,7 +11,6 @@ class Table extends Component {
       applications: ""
     };
   }
-
   componentDidMount() {
     $("#search").focus(function() {
       $(this)
@@ -137,6 +136,8 @@ class Table extends Component {
       />
     );
   }
+
+
 
   displayRows() {
     var returnValue = [];

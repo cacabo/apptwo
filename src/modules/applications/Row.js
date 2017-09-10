@@ -8,6 +8,7 @@ class Row extends Component {
   render() {
     return (
       <tr className="table-row">
+
         <td>{this.props.counter}</td>
         <td>
           <a className="purple-text" href={"/applications/" + this.props.id}>
@@ -31,9 +32,13 @@ class Row extends Component {
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuLink"
             >
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-pencil" /> Edit
+              <a
+                className="dropdown-item"
+                href={'/applications/' + this.props.id + '/edit'}
+              >
+                <i className="fa fa-pencil"></i> Edit
               </a>
+
               <a
                 className="dropdown-item"
                 onClick={this.props.onClick}
