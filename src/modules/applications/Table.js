@@ -162,7 +162,7 @@ class Table extends Component {
     let relevantApps = {};
     const searchable = [];
     for(const key in allApps) {
-      if (allApps[key].title.indexOf(e) !== -1 || allApps[key].company.indexOf(e) !== -1) {
+      if (allApps[key].title.toLowerCase().indexOf(e.toLowerCase()) !== -1 || allApps[key].company.toLowerCase().indexOf(e.toLowerCase()) !== -1) {
           relevantApps[key] = allApps[key];
       }
     }
