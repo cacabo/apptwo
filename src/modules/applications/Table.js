@@ -73,7 +73,6 @@ class Table extends Component {
         newAppObj[key] = value;
     }
     this.setState({
-      // applications: newAppObj,
       relevantApps: newAppObj,
       isForwardDeadline: !this.state.isForwardDeadline,
       sortedByDeadline: true,

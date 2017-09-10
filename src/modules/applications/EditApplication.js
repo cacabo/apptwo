@@ -6,26 +6,17 @@ import $ from "jquery";
 class EditApplication extends Component {
   constructor(props) {
     super(props);
-    const id = window.location.split("application/")[1].split("/edit")[0];
-    const user = firebase.auth().currentUser;
-    const database = firebase.database();
-    const ref = database
-      .ref(`users/${user.uid}/applications/${id}`)
-      .once("value")
-      .then(snapshot => {
-        const application = snapshot.val();
-        this.setState({
-          application
-        });
-      });
-
-    this.state = { title: "" + this.state.application.title , company: "" + this.state.application.company, deadline: ""
-   + this.state.application.deadline };
+    this.state = {
+      application: {
+        title: '',
+        company: '',
+        deadline: '',
+      }
+    }
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
     this.handleChangeDeadline = this.handleChangeDeadline.bind(this);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -39,18 +30,50 @@ class EditApplication extends Component {
     $('.form-control').blur(function() {
       $(this).prev('label').removeClass('purple-text');
     });
+
+    const id = window.location.href.split("applications/")[1].split("/edit")[0];
+    const user = firebase.auth().currentUser;
+    const database = firebase.database();
+    const ref = database
+      .ref(`users/${user.uid}/applications/${id}`)
+      .once("value")
+      .then(snapshot => {
+        const application = snapshot.val();
+        this.setState({
+          application,
+          id,
+        });
+      });
   }
 
   handleChangeTitle(event) {
-    this.setState({ title: event.target.value });
+    this.setState({
+      application: {
+        title: event.target.value,
+        company: this.state.application.company,
+        deadline: this.state.application.deadline,
+      }
+    });
   }
 
   handleChangeCompany(event) {
-    this.setState({ company: event.target.value });
+    this.setState({
+      application: {
+        title: this.state.application.title,
+        company: event.target.value,
+        deadline: this.state.application.deadline,
+      }
+    });
   }
 
   handleChangeDeadline(event) {
-    this.setState({ deadline: event.target.value });
+    this.setState({
+      application: {
+        title: this.state.application.title,
+        company: this.state.application.company,
+        deadline: event.target.value,
+      }
+    });
   }
 
   handleSubmit(event) {
@@ -58,11 +81,11 @@ class EditApplication extends Component {
     const user = firebase.auth().currentUser;
     firebase
       .database()
-      .ref(`users/${user.uid}/applications`)
-      .set({
-        title: this.state.title,
-        company: this.state.company,
-        deadline: this.state.deadline
+      .ref(`users/${user.uid}/applications/${this.state.id}`)
+      .update({
+        title: this.state.application.title,
+        company: this.state.application.company,
+        deadline: this.state.application.deadline
       })
       .then(() => {
         window.location = "/applications";
@@ -88,7 +111,7 @@ class EditApplication extends Component {
             <input
               type="text"
               className="form-control marg-bot-1"
-              value={this.state.title}
+              value={this.state.application.title}
               onChange={this.handleChangeTitle}
               required="true"
             />
@@ -97,7 +120,7 @@ class EditApplication extends Component {
             <input
               type="text"
               className="form-control marg-bot-1"
-              value={this.state.company}
+              value={this.state.application.company}
               onChange={this.handleChangeCompany}
               required="true"
             />
@@ -106,14 +129,17 @@ class EditApplication extends Component {
             <input
               type="datetime-local"
               className="form-control marg-bot-1"
-              value={this.state.deadline}
+              value={this.state.application.deadline}
               onChange={this.handleChangeDeadline}
             />
 
             <input
               type="submit"
               className={
-                this.state.title.length && this.state.company.length ? (
+                this.state.application.title &&
+                this.state.application.title.length &&
+                this.state.application.company &&
+                this.state.application.company.length ? (
                   "btn white shade-3 hover cursor white-text purple bold"
                 ) : (
                   "disabled btn white shade-3 hover cursor white-text purple bold"

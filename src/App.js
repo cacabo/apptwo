@@ -54,7 +54,7 @@ class App extends Component {
             <Route exact path="/user" component={User} />
             <Route exact path="/applications" component={Table} />
             <Route exact path="/applications/new" component={NewApplication} />
-            <Route exact path="/applications/:id/edit" component={NewApplication} />
+            <Route exact path="/applications/:id/edit" component={EditApplication} />
             <Route exact path="/applications/:id" component={Application} />
             <Route exact path="/register" component={() => {}} />
             <Route exact path="/login" component={() => {}} />
