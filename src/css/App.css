@@ -91,3 +91,20 @@ label {
 .table-row:hover {
   background: #f6f9fc;
 }
+
+/* search */
+.search-wrapper {
+  display: block;
+  height: 2.5rem;
+}
+
+.search-wrapper .fa {
+  position: absolute;
+  padding: 0.75rem 0rem 0.75rem 1rem;
+}
+
+.search-wrapper #search {
+  padding-left: 3rem;
+  font-size: 1.2rem;
+  border-bottom: 0px solid transparent !important;
+}

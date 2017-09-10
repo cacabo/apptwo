@@ -57,6 +57,10 @@ class Table extends Component {
     return (
       <div className="row">
         <div className="col-12">
+          <div className="fade-in white round-1 shade-1 marg-bot-2 search-wrapper">
+            <i className="fa fa-search fa-lg blue-gray-text"></i><input className="form-control" id="search" />
+          </div>
+
           <div className="fade-in white round-1 shade-1">
             <table className="table">
               <thead>
@@ -65,6 +69,7 @@ class Table extends Component {
                   <th>Job Title</th>
                   <th>Company</th>
                   <th>Deadline</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>{this.displayRows()}</tbody>
