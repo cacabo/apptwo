@@ -1,8 +1,8 @@
 import firebase from "firebase";
 import React, { Component } from "react";
 import Row from "./Row";
-import $ from 'jquery';
-import moment from 'moment';
+import $ from "jquery";
+import moment from "moment";
 
 class Table extends Component {
   constructor(props) {
@@ -15,14 +15,19 @@ class Table extends Component {
       isForwardCompany: true,
     };
   }
-
   componentDidMount() {
-    $('#search').focus(function() {
-      $(this).prev('.fa').addClass('purple-text').removeClass('blue-gray-text');
+    $("#search").focus(function() {
+      $(this)
+        .prev(".fa")
+        .addClass("purple-text")
+        .removeClass("blue-gray-text");
     });
 
-    $('#search').blur(function() {
-      $(this).prev('.fa').removeClass('purple-text').addClass('blue-gray-text');
+    $("#search").blur(function() {
+      $(this)
+        .prev(".fa")
+        .removeClass("purple-text")
+        .addClass("blue-gray-text");
     });
 
     $(".fade-in")
@@ -44,13 +49,13 @@ class Table extends Component {
   }
 
   sortByDeadline() {
-      let newApps = Object.assign({}, this.state.applications);
-      const sortable = [];
-      for(const key in newApps) {
-        if (newApps.hasOwnProperty(key)) {
-          sortable.push([key,newApps[key]]);
-        }
+    let newApps = Object.assign({}, this.state.relevantApps);
+    const sortable = [];
+    for (const key in newApps) {
+      if (newApps.hasOwnProperty(key)) {
+        sortable.push([key, newApps[key]]);
       }
+    }
       sortable.sort((a,b) => {
         if (this.state.isForwardDeadline) {
           return moment(a[1].deadline).unix() - moment(b[1].deadline).unix();
@@ -65,21 +70,21 @@ class Table extends Component {
         newAppObj[key] = value;
     }
     this.setState({
-      applications: newAppObj,
+      // applications: newAppObj,
+      relevantApps: newAppObj,
       isForwardDeadline: !this.state.isForwardDeadline,
     });
-
   }
 
   sortByPosition() {
-    let newApps = Object.assign({}, this.state.applications);
+    let newApps = Object.assign({}, this.state.relevantApps);
     const sortable = [];
-    for(const key in newApps) {
+    for (const key in newApps) {
       if (newApps.hasOwnProperty(key)) {
-        sortable.push([key,newApps[key]]);
+        sortable.push([key, newApps[key]]);
       }
     }
-    sortable.sort((a,b) => {
+    sortable.sort((a, b) => {
       const x = a[1].title.toLowerCase();
       const y = b[1].title.toLowerCase();
       if (this.state.isForwardPosition) {
@@ -95,20 +100,21 @@ class Table extends Component {
       newAppObj[key] = value;
   }
   this.setState({
-    applications: newAppObj,
+    // applications: newAppObj,
+    relevantApps: newAppObj,
     isForwardPosition: !this.state.isForwardPosition,
   });
   }
 
   sortByCompany() {
-    let newApps = Object.assign({}, this.state.applications);
+    let newApps = Object.assign({}, this.state.relevantApps);
     const sortable = [];
-    for(const key in newApps) {
+    for (const key in newApps) {
       if (newApps.hasOwnProperty(key)) {
-        sortable.push([key,newApps[key]]);
+        sortable.push([key, newApps[key]]);
       }
     }
-    sortable.sort((a,b) => {
+    sortable.sort((a, b) => {
       const x = a[1].company.toLowerCase();
       const y = b[1].company.toLowerCase();
       if (this.state.isForwardCompany) {
@@ -122,11 +128,21 @@ class Table extends Component {
       var key = sortable[i][0];
       var value = sortable[i][1];
       newAppObj[key] = value;
+    }
+    this.setState({
+      // applications: newAppObj,
+      relevantApps: newAppObj,
+      isForwardCompany: !this.state.isForwardCompany,
+    });
   }
-  this.setState({
-    applications: newAppObj,
-    isForwardCompany: !this.state.isForwardCompany,
-  });
+
+  handleDelete(key) {
+    const user = firebase.auth().currentUser;
+    const database = firebase.database();
+    const ref = database
+      .ref(`users/${user.uid}/applications`)
+      .child(key)
+      .remove();
   }
 
   search(e) {
@@ -155,9 +171,12 @@ class Table extends Component {
         title={application.title}
         company={application.company}
         deadline={moment(application.deadline).format("ddd M/D/YY, h:mma")}
+        onClick={() => this.handleDelete(key)}
       />
     );
   }
+
+
 
   displayRows() {
     var returnValue = [];

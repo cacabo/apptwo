@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from "firebase";
+import $ from "jquery";
 
 class NavbarNavigation extends Component {
   logout() {
@@ -16,8 +17,10 @@ class NavbarNavigation extends Component {
   }
 
   render() {
-    return (
-      this.props.isLoggedIn ? (
+    if (this.props.isLoggedIn === null) {
+      return (<ul className="navbar-nav"></ul>);
+    } else if (this.props.isLoggedIn) {
+      return (
         <ul className="navbar-nav">
           <li className="nav-item bold">
             <a className="nav-link" href="/">
@@ -45,7 +48,9 @@ class NavbarNavigation extends Component {
             </a>
           </li>
         </ul>
-      ) : (
+      );
+    } else {
+      return (
         <ul className="navbar-nav">
           <li className="nav-item bold">
             <a className="nav-link" href="/">
@@ -68,8 +73,8 @@ class NavbarNavigation extends Component {
             </a>
           </li>
         </ul>
-      )
-    );
+      );
+    }
   }
 }
 
