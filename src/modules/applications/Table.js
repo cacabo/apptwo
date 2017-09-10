@@ -10,6 +10,7 @@ class Table extends Component {
       applications: ""
     };
   }
+
   componentDidMount() {
     $(".fade-in")
       .delay(100)
@@ -28,6 +29,15 @@ class Table extends Component {
       });
   }
 
+  handleDelete(key) {
+    const user = firebase.auth().currentUser;
+    const database = firebase.database();
+    const ref = database
+      .ref(`users/${user.uid}/applications`)
+      .child(key)
+      .remove();
+  }
+
   displayRow(key, count) {
     const application = this.state.applications[key];
     return (
@@ -38,6 +48,7 @@ class Table extends Component {
         title={application.title}
         company={application.company}
         deadline={application.deadline}
+        onClick={() => this.handleDelete(key)}
       />
     );
   }
