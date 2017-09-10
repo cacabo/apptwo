@@ -9,12 +9,12 @@ Say goodbye to a reckless mess of Excel sheets and Word docs.
 __Functionality__
 - [ ] User delete account
 - [ ] User edit application
-- [ ] User delete application
+- [x] User delete application
 - [ ] User verification?
 - [ ] Fix issue with async navbar loading
 
 __Views__
-- [ ] Link from table to application show page
+- [x] Link from table to application show page
 - [ ] Build out user show page
 - [ ] New component form
 - [ ] Edit component form
