@@ -9,7 +9,7 @@ Say goodbye to a reckless mess of Excel sheets and Word docs.
 __Functionality__
 - [ ] User delete account
 - [ ] User edit application
-- [ ] User delete application
+- [x] User delete application
 - [ ] User verification?
 - [ ] Fix issue with async navbar loading
 
