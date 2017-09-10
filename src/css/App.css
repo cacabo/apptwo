@@ -94,13 +94,20 @@ label {
 
 /* search */
 .search-wrapper {
-  display: block;
+  cursor: hand;
+  cursor: pointer;
+  display: inline-block;
   height: 2.5rem;
+  width: auto;
+  min-width: 3.5rem;
+  max-width: 100% !important;
+  transition: all 0.2s ease;
 }
 
 .search-wrapper .fa {
   position: absolute;
   padding: 0.75rem 0rem 0.75rem 1rem;
+  transition: all 0.2s ease;
 }
 
 .search-wrapper #search {

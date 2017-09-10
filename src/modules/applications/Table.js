@@ -12,6 +12,14 @@ class Table extends Component {
   }
 
   componentDidMount() {
+    $('#search').focus(function() {
+      $(this).prev('.fa').addClass('purple-text').removeClass('blue-gray-text');
+    });
+
+    $('#search').blur(function() {
+      $(this).prev('.fa').removeClass('purple-text').addClass('blue-gray-text');
+    });
+
     $(".fade-in")
       .delay(100)
       .fadeIn(200);
@@ -57,7 +65,7 @@ class Table extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <div className="fade-in white round-1 shade-1 marg-bot-2 search-wrapper">
+          <div className="fade-in white round-1 shade-1 hover marg-bot-2 search-wrapper">
             <i className="fa fa-search fa-lg blue-gray-text"></i><input className="form-control" id="search" />
           </div>
 
