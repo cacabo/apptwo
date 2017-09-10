@@ -40,7 +40,8 @@ class EditApplication extends Component {
       .then(snapshot => {
         const application = snapshot.val();
         this.setState({
-          application
+          application,
+          id,
         });
       });
   }
@@ -80,7 +81,7 @@ class EditApplication extends Component {
     const user = firebase.auth().currentUser;
     firebase
       .database()
-      .ref(`users/${user.uid}/applications/${this.state.application.key}`)
+      .ref(`users/${user.uid}/applications/${this.state.id}`)
       .update({
         title: this.state.application.title,
         company: this.state.application.company,
