@@ -1,37 +1,63 @@
+import firebase from "firebase";
 import React, { Component } from "react";
 import ResCol from "../../helper/ResCol";
-import $ from 'jquery';
-import autosize from 'autosize';
+import $ from "jquery";
+import autosize from "autosize";
 
-class NewNote extends Component{
+class NewNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
-      body: "",
+      body: ""
     };
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeBody = this.handleChangeBody.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    $('.fade-in').delay(100).fadeIn(200);
+    $(".fade-in")
+      .delay(100)
+      .fadeIn(200);
 
-    autosize($('textarea'));
+    autosize($("textarea"));
   }
 
   handleChangeTitle(event) {
-    this.setState({title: event.target.value });
+    this.setState({ title: event.target.value });
   }
 
   handleChangeBody(event) {
-    this.setState({body: event.target.value});
+    this.setState({ body: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    const user = firebase.auth().currentUser;
+    const id = window.location.href
+      .split("applications/")[1]
+      .split("/notes")[0];
+    firebase
+      .database()
+      .ref(`users/${user.uid}/applications/${id}/notes`)
+      .push({
+        title: this.state.title,
+        body: this.state.body
+      })
+      .then(() => {
+        window.location = `/applications/${id}`;
+      })
+      .catch(error => {
+        alert(error.message);
+        console.log(
+          "Error registering with firebase",
+          error.code,
+          error.message
+        );
+      });
   }
 
   render() {
