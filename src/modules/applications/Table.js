@@ -1,24 +1,30 @@
 import firebase from "firebase";
 import React, { Component } from "react";
 import Row from "./Row";
-import $ from 'jquery';
-import moment from 'moment';
+import $ from "jquery";
+import moment from "moment";
 
 class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      applications: "",
+      applications: ""
     };
   }
 
   componentDidMount() {
-    $('#search').focus(function() {
-      $(this).prev('.fa').addClass('purple-text').removeClass('blue-gray-text');
+    $("#search").focus(function() {
+      $(this)
+        .prev(".fa")
+        .addClass("purple-text")
+        .removeClass("blue-gray-text");
     });
 
-    $('#search').blur(function() {
-      $(this).prev('.fa').removeClass('purple-text').addClass('blue-gray-text');
+    $("#search").blur(function() {
+      $(this)
+        .prev(".fa")
+        .removeClass("purple-text")
+        .addClass("blue-gray-text");
     });
 
     $(".fade-in")
@@ -39,37 +45,36 @@ class Table extends Component {
   }
 
   sortByDeadline() {
-      let newApps = Object.assign({}, this.state.applications);
-      const sortable = [];
-      for(const key in newApps) {
-        if (newApps.hasOwnProperty(key)) {
-          sortable.push([key,newApps[key]]);
-        }
+    let newApps = Object.assign({}, this.state.applications);
+    const sortable = [];
+    for (const key in newApps) {
+      if (newApps.hasOwnProperty(key)) {
+        sortable.push([key, newApps[key]]);
       }
-      sortable.sort((a,b) => {
-        return moment(a[1].deadline).unix() - moment(b[1].deadline).unix();
-      });
-      const newAppObj = {};
-      for (var i = 0; i < sortable.length; i++) {
-        var key = sortable[i][0];
-        var value = sortable[i][1];
-        newAppObj[key] = value;
+    }
+    sortable.sort((a, b) => {
+      return moment(a[1].deadline).unix() - moment(b[1].deadline).unix();
+    });
+    const newAppObj = {};
+    for (var i = 0; i < sortable.length; i++) {
+      var key = sortable[i][0];
+      var value = sortable[i][1];
+      newAppObj[key] = value;
     }
     this.setState({
       applications: newAppObj
     });
-
   }
 
   sortByPosition() {
     let newApps = Object.assign({}, this.state.applications);
     const sortable = [];
-    for(const key in newApps) {
+    for (const key in newApps) {
       if (newApps.hasOwnProperty(key)) {
-        sortable.push([key,newApps[key]]);
+        sortable.push([key, newApps[key]]);
       }
     }
-    sortable.sort((a,b) => {
+    sortable.sort((a, b) => {
       const x = a[1].title.toLowerCase();
       const y = b[1].title.toLowerCase();
       return x < y ? -1 : x > y ? 1 : 0;
@@ -79,21 +84,21 @@ class Table extends Component {
       var key = sortable[i][0];
       var value = sortable[i][1];
       newAppObj[key] = value;
-  }
-  this.setState({
-    applications: newAppObj
-  });
+    }
+    this.setState({
+      applications: newAppObj
+    });
   }
 
   sortByCompany() {
     let newApps = Object.assign({}, this.state.applications);
     const sortable = [];
-    for(const key in newApps) {
+    for (const key in newApps) {
       if (newApps.hasOwnProperty(key)) {
-        sortable.push([key,newApps[key]]);
+        sortable.push([key, newApps[key]]);
       }
     }
-    sortable.sort((a,b) => {
+    sortable.sort((a, b) => {
       const x = a[1].company.toLowerCase();
       const y = b[1].company.toLowerCase();
       return x < y ? -1 : x > y ? 1 : 0;
@@ -103,10 +108,12 @@ class Table extends Component {
       var key = sortable[i][0];
       var value = sortable[i][1];
       newAppObj[key] = value;
+    }
+    this.setState({
+      applications: newAppObj
+    });
   }
-  this.setState({
-    applications: newAppObj
-  });
+
   handleDelete(key) {
     const user = firebase.auth().currentUser;
     const database = firebase.database();
@@ -146,7 +153,8 @@ class Table extends Component {
       <div className="row">
         <div className="col-12">
           <div className="fade-in white round-1 shade-1 hover marg-bot-2 search-wrapper">
-            <i className="fa fa-search fa-lg blue-gray-text"></i><input className="form-control" id="search" />
+            <i className="fa fa-search fa-lg blue-gray-text" />
+            <input className="form-control" id="search" />
           </div>
 
           <div className="fade-in white round-1 shade-1">
@@ -154,9 +162,27 @@ class Table extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th onClick={() => {this.sortByPosition()}}>Job Title</th>
-                  <th onClick={() => {this.sortByCompany()}}>Company</th>
-                  <th onClick={() => {this.sortByDeadline()}}>Deadline</th>
+                  <th
+                    onClick={() => {
+                      this.sortByPosition();
+                    }}
+                  >
+                    Job Title
+                  </th>
+                  <th
+                    onClick={() => {
+                      this.sortByCompany();
+                    }}
+                  >
+                    Company
+                  </th>
+                  <th
+                    onClick={() => {
+                      this.sortByDeadline();
+                    }}
+                  >
+                    Deadline
+                  </th>
                 </tr>
               </thead>
               <tbody>{this.displayRows()}</tbody>
