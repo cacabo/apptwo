@@ -7,11 +7,12 @@ class NewApplication extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { title: "", company: "", deadline: "" };
+    this.state = { title: "", company: "", deadline: "", url: "" };
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
     this.handleChangeDeadline = this.handleChangeDeadline.bind(this);
+    this.handleChangeURL = this.handleChangeURL.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -40,6 +41,10 @@ class NewApplication extends Component {
     this.setState({ deadline: event.target.value });
   }
 
+  handleChangeURL(event) {
+    this.setState({ url: event.target.value });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const user = firebase.auth().currentUser;
@@ -49,7 +54,8 @@ class NewApplication extends Component {
       .push({
         title: this.state.title,
         company: this.state.company,
-        deadline: this.state.deadline
+        deadline: this.state.deadline,
+        url: this.state.url,
       })
       .then(() => {
         window.location = "/applications";
@@ -71,7 +77,7 @@ class NewApplication extends Component {
           <form onSubmit={this.handleSubmit}>
             <h2 className="marg-bot-1">New application</h2>
 
-            <label>Position Title</label>
+            <label>Position Title*</label>
             <input
               type="text"
               className="form-control marg-bot-1"
@@ -80,13 +86,21 @@ class NewApplication extends Component {
               required="true"
             />
 
-            <label>Company</label>
+            <label>Company*</label>
             <input
               type="text"
               className="form-control marg-bot-1"
               value={this.state.company}
               onChange={this.handleChangeCompany}
               required="true"
+            />
+
+            <label>Link</label>
+            <input
+              type="url"
+              className="form-control marg-bot-1"
+              value={this.state.url}
+              onChange={this.handleChangeURL}
             />
 
             <label>Deadline</label>

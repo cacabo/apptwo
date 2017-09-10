@@ -10,12 +10,14 @@ class EditApplication extends Component {
       application: {
         title: '',
         company: '',
+        url: '',
         deadline: '',
       }
     }
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
+    this.handleChangeURL = this.handleChangeURL.bind(this);
     this.handleChangeDeadline = this.handleChangeDeadline.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -51,6 +53,7 @@ class EditApplication extends Component {
       application: {
         title: event.target.value,
         company: this.state.application.company,
+        url: this.state.application.url,
         deadline: this.state.application.deadline,
       }
     });
@@ -61,6 +64,18 @@ class EditApplication extends Component {
       application: {
         title: this.state.application.title,
         company: event.target.value,
+        url: this.state.application.url,
+        deadline: this.state.application.deadline,
+      }
+    });
+  }
+
+  handleChangeURL(event) {
+    this.setState({
+      application: {
+        title: this.state.application.title,
+        company: this.state.application.company,
+        url: event.target.value,
         deadline: this.state.application.deadline,
       }
     });
@@ -71,6 +86,7 @@ class EditApplication extends Component {
       application: {
         title: this.state.application.title,
         company: this.state.application.company,
+        url: this.state.application.url,
         deadline: event.target.value,
       }
     });
@@ -85,7 +101,8 @@ class EditApplication extends Component {
       .update({
         title: this.state.application.title,
         company: this.state.application.company,
-        deadline: this.state.application.deadline
+        deadline: this.state.application.deadline,
+        url: this.state.application.url,
       })
       .then(() => {
         window.location = "/applications";
@@ -107,7 +124,7 @@ class EditApplication extends Component {
           <form onSubmit={this.handleSubmit}>
             <h2 className="marg-bot-1">Edit application</h2>
 
-            <label>Position Title</label>
+            <label>Position Title*</label>
             <input
               type="text"
               className="form-control marg-bot-1"
@@ -116,13 +133,21 @@ class EditApplication extends Component {
               required="true"
             />
 
-            <label>Company</label>
+            <label>Company*</label>
             <input
               type="text"
               className="form-control marg-bot-1"
               value={this.state.application.company}
               onChange={this.handleChangeCompany}
               required="true"
+            />
+
+            <label>Link</label>
+            <input
+              type="url"
+              className="form-control marg-bot-1"
+              value={this.state.application.url}
+              onChange={this.handleChangeURL}
             />
 
             <label>Deadline</label>
