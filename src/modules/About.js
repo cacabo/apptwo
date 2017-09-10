@@ -18,6 +18,9 @@ class Home extends Component {
               An app to make applications easier.
             </p>
             <p>
+              Never stress about job applications again.
+            </p>
+            <p>
               Made by four roommates in a dorm room. Making your life easier one step at a time.
             </p>
             <p>
