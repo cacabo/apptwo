@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import ResCol from "../../helper/ResCol";
+import $ from 'jquery';
+import autosize from 'autosize';
 
 class NewNote extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      title: "", body: ""
+      title: "",
+      body: "",
     };
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeBody = this.handleChangeBody.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    $('.fade-in').delay(100).fadeIn(200);
+
+    autosize($('textarea'));
   }
 
   handleChangeTitle(event) {
@@ -41,10 +50,13 @@ class NewNote extends Component{
               required="true"
             />
 
+            <label>Body</label>
             <textarea
               name="body"
-              onChange={this.handleChangeBody}
+              className="form-control marg-bot-1 autosize"
               value={this.state.body}
+              onChange={this.handleChangeBody}
+              rows="1"
             />
 
             <input
@@ -64,3 +76,5 @@ class NewNote extends Component{
     );
   }
 }
+
+export default NewNote;

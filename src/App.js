@@ -22,6 +22,7 @@ import NotFound from "./modules/NotFound";
 import User from "./modules/users/User";
 import NewApplication from "./modules/applications/NewApplication";
 import EditApplication from "./modules/applications/EditApplication";
+import NewNote from "./modules/applications/notes/NewNote";
 
 // Application
 class App extends Component {
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/user" component={User} />
             <Route exact path="/applications" component={Table} />
+            <Route exact path="/applications/:id/notes/new" component={NewNote} />
             <Route exact path="/applications/new" component={NewApplication} />
             <Route exact path="/applications/:id/edit" component={EditApplication} />
             <Route exact path="/applications/:id" component={Application} />
