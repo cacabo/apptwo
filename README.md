@@ -21,6 +21,7 @@ __Views__
 - [ ] Delete component form
 - [x] Edit article form
 - [x] Delete article button
+- [ ] Link to edit/delete applicaiton from application show page
 
 __Backend__
 - [ ] Notes
@@ -31,7 +32,7 @@ __Backend__
   - [ ] Email (optional)
   - [ ] Name
   - [ ] Notes
-  
+
 - [ ] Firebase / google analytics
 - [ ] Add more information for applications
   - [ ] Link (where to submit / online job posting)
@@ -43,3 +44,4 @@ __Backend__
 __Down the line__
 - [ ] LinkedIn (scraping?)
 - [ ] Referrals
+- [ ] Dropdown menu styling
