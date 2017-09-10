@@ -42,7 +42,12 @@ class EditApplication extends Component {
       .then(snapshot => {
         const application = snapshot.val();
         this.setState({
-          application
+          application: {
+            title: application.title ? application.title : '',
+            company: application.company ? application.company : '',
+            url: application.url ? application.url : '',
+            dealine: application.deadline ? application.deadline : '',
+          }
         });
       });
   }
@@ -92,11 +97,14 @@ class EditApplication extends Component {
   }
 
   handleSubmit(event) {
+    var id = window.location.href.split('applications/')[1].split('/edit')[0];
+    console.log(id);
+
     event.preventDefault();
     const user = firebase.auth().currentUser;
     firebase
       .database()
-      .ref(`users/${user.uid}/applications/${this.state.application.key}`)
+      .ref(`users/${user.uid}/applications/${id}`)
       .update({
         title: this.state.application.title,
         company: this.state.application.company,

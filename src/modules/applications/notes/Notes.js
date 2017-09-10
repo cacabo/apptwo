@@ -11,6 +11,9 @@ class Notes extends Component {
   }
 
   componentDidMount() {
+    console.log("in componentDidMount");
+
+
     const user = firebase.auth().currentUser;
     const database = firebase.database();
     const id = window.location.href
@@ -25,21 +28,19 @@ class Notes extends Component {
         this.setState({
           notes
         });
-        console.log(notes);
       });
   }
 
   displayNote(key, count) {
-    // const note = this.state.notes[key];
-    // return (
-    //   <Row
-    //     key={key}
-    //     id={key}
-    //     counter={count}
-    //     title={note.title}
-    //     body={note.body}
-    //   />
-    // );
+    const note = this.state.notes[key];
+    return (
+      <Note
+        key={key}
+        id={key}
+        title={note.title}
+        body={note.body}
+      />
+    );
   }
 
   displayNotes() {
@@ -53,8 +54,8 @@ class Notes extends Component {
   }
 
   renderNotes() {
-    if (this.props.children && this.props.children.length) {
-      <Note title="hi there" body="hows it going my friend" />;
+    if (this.state.notes) {
+      return this.displayNotes();
     } else {
       return <div className="fade-in white round-1 pad-2 shade-1" />;
     }
