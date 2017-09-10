@@ -17,7 +17,6 @@ class EditApplication extends Component {
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
     this.handleChangeDeadline = this.handleChangeDeadline.bind(this);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
