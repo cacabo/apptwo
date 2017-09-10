@@ -9,6 +9,10 @@ class Table extends Component {
     super(props);
     this.state = {
       applications: "",
+      relevantApps: "",
+      isForwardDeadline: true,
+      isForwardPosition: true,
+      isForwardCompany: true,
     };
   }
 
@@ -33,7 +37,8 @@ class Table extends Component {
       .then(snapshot => {
         const applications = snapshot.val();
         this.setState({
-          applications
+          applications,
+          relevantApps: applications,
         });
       });
   }
@@ -47,7 +52,11 @@ class Table extends Component {
         }
       }
       sortable.sort((a,b) => {
-        return moment(a[1].deadline).unix() - moment(b[1].deadline).unix();
+        if (this.state.isForwardDeadline) {
+          return moment(a[1].deadline).unix() - moment(b[1].deadline).unix();
+        } else {
+          return moment(b[1].deadline).unix() - moment(a[1].deadline).unix();
+        }
       });
       const newAppObj = {};
       for (var i = 0; i < sortable.length; i++) {
@@ -56,7 +65,8 @@ class Table extends Component {
         newAppObj[key] = value;
     }
     this.setState({
-      applications: newAppObj
+      applications: newAppObj,
+      isForwardDeadline: !this.state.isForwardDeadline,
     });
 
   }
@@ -72,7 +82,11 @@ class Table extends Component {
     sortable.sort((a,b) => {
       const x = a[1].title.toLowerCase();
       const y = b[1].title.toLowerCase();
-      return x < y ? -1 : x > y ? 1 : 0;
+      if (this.state.isForwardPosition) {
+        return x < y ? -1 : x > y ? 1 : 0;
+      } else {
+        return y < x ? -1 : y > x ? 1 : 0;
+      }
     });
     const newAppObj = {};
     for (var i = 0; i < sortable.length; i++) {
@@ -81,7 +95,8 @@ class Table extends Component {
       newAppObj[key] = value;
   }
   this.setState({
-    applications: newAppObj
+    applications: newAppObj,
+    isForwardPosition: !this.state.isForwardPosition,
   });
   }
 
@@ -96,7 +111,11 @@ class Table extends Component {
     sortable.sort((a,b) => {
       const x = a[1].company.toLowerCase();
       const y = b[1].company.toLowerCase();
-      return x < y ? -1 : x > y ? 1 : 0;
+      if (this.state.isForwardCompany) {
+        return x < y ? -1 : x > y ? 1 : 0;
+      } else {
+        return y < x ? -1 : y > x ? 1 : 0;
+      }
     });
     const newAppObj = {};
     for (var i = 0; i < sortable.length; i++) {
@@ -105,12 +124,29 @@ class Table extends Component {
       newAppObj[key] = value;
   }
   this.setState({
-    applications: newAppObj
+    applications: newAppObj,
+    isForwardCompany: !this.state.isForwardCompany,
   });
   }
 
+  search(e) {
+    console.log('searching', e);
+    let allApps = Object.assign({}, this.state.applications);
+    let relevantApps = {};
+    const searchable = [];
+    for(const key in allApps) {
+      if (allApps[key].title.indexOf(e) !== -1 || allApps[key].company.indexOf(e) !== -1) {
+          relevantApps[key] = allApps[key];
+      }
+    }
+    console.log('rel', relevantApps);
+    this.setState({
+      relevantApps,
+    });
+  }
+
   displayRow(key, count) {
-    const application = this.state.applications[key];
+    const application = this.state.relevantApps[key];
     return (
       <Row
         key={key}
@@ -126,7 +162,7 @@ class Table extends Component {
   displayRows() {
     var returnValue = [];
     var count = 1;
-    for (const key in this.state.applications) {
+    for (const key in this.state.relevantApps) {
       returnValue.push(this.displayRow(key, count));
       count += 1;
     }
@@ -138,7 +174,7 @@ class Table extends Component {
       <div className="row">
         <div className="col-12">
           <div className="fade-in white round-1 shade-1 hover marg-bot-2 search-wrapper">
-            <i className="fa fa-search fa-lg blue-gray-text"></i><input className="form-control" id="search" />
+            <i className="fa fa-search fa-lg blue-gray-text"></i><input onChange={(e) => {this.search(e.target.value)}} className="form-control" id="search" />
           </div>
 
           <div className="fade-in white round-1 shade-1">
@@ -146,22 +182,14 @@ class Table extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-<<<<<<< HEAD
-                  <th>Job Title</th>
-                  <th>Company</th>
-                  <th>Deadline</th>
-                  <th></th>
-=======
                   <th onClick={() => {this.sortByPosition()}}>Job Title</th>
                   <th onClick={() => {this.sortByCompany()}}>Company</th>
                   <th onClick={() => {this.sortByDeadline()}}>Deadline</th>
->>>>>>> search
                 </tr>
               </thead>
               <tbody>{this.displayRows()}</tbody>
             </table>
           </div>
-
           <div className="space-1" />
           <a
             href="/applications/new"
